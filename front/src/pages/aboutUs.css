@@ -1,0 +1,55 @@
+.about-us-container {
+    
+    margin: 2% 12%;
+    padding: 20px;
+  }
+  
+  .titleee {
+    color: rgba(33, 158, 188, 1);
+    margin-bottom: 20px;
+  }
+  
+  .descriptionabout {
+    color: rgba(2, 48, 71, 1);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .subtitle {
+    color: rgba(33, 158, 188, 1);
+    margin-bottom: 10px;
+  }
+  
+  .mission {
+    color: rgba(2, 48, 71, 1);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .values-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .values-list li {
+    color: rgba(2, 48, 71, 1);
+    margin-bottom: 5px;
+  }
+  
+  .about-us-cta {
+    background-color: rgba(33, 158, 188, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .cta-title {
+    color: rgba(33, 158, 188, 1);
+    margin-bottom: 10px;
+  }
+  
+  .cta-description {
+    color: rgba(2, 48, 71, 1);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  

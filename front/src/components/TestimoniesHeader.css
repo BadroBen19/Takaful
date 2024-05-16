@@ -1,0 +1,47 @@
+.testimonies-header {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.left,
+.right {
+  width: 50%;
+}
+.img {
+  background: rgba(33, 158, 188, 1);
+  width: 669px;
+  height: 619px;
+  position: absolute; /* Changed from absolute to fixed */
+  top: 183px;
+  left: 971px;
+  border-radius: 50%; /* This makes the div circular */
+  opacity: 1; /* Changed from 0 to 1 */
+}
+.text-header {
+  width: 689px;
+  height: 89px;
+  margin-top: 243px;
+  margin-left: 168px;
+  font-family: Roboto;
+  font-size: 70px;
+  font-weight: 700;
+  line-height: 82.03px;
+  letter-spacing: -0.015em;
+  text-align: left;
+}
+
+.p-header {
+  width: 786px;
+  height: 482px;
+  margin-top: 140px; /* 383px (top of p-header) - 243px (top of text-header) = 140px */
+  margin-left: 168px;
+  font-family: Roboto;
+  font-family: Roboto;
+  font-size: 35px;
+  font-weight: 300;
+  line-height: 41.02px;
+  letter-spacing: -0.015em;
+  text-align: left;
+  color: rgba(2, 48, 71, 1);
+}

@@ -1,0 +1,62 @@
+*{margin: 0px;
+    padding: 0px;
+    font-family: 'Roboto', Arial, sans-serif;
+    color:rgba(2, 48, 71, 1);
+  /*  background-color: black;*/
+}
+
+.star2{
+    position: absolute;
+
+    top: 2100px;
+  
+    left: 800px;
+  
+    transform: translate(-50%, -50%);
+  
+    background-color: white;
+  
+    
+  
+    border: 1px solid black;
+  
+    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);*/
+  
+    z-index: 1;
+    display:flex;
+    justify-content: center;
+    margin-top: 2.00px;
+}
+
+.kl{
+width:800px;
+height: 280px;
+background-color: whitesmoke;
+font-size: 20px;
+
+
+}
+.pp11{font-size: 30px;
+margin-top: 40px;
+
+}
+.lgsn{display:flex;
+justify-content: space-around;
+
+
+}
+.zbel{
+    display:flex;
+justify-content: center;
+
+}
+#gog{
+    margin-top: 70px;
+}
+.lil{
+    color:rgba(33, 158, 188, 1) ;
+}
+.lil:hover{
+    color:rgba(244, 117, 21, 1);
+}
+

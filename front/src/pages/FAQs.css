@@ -1,0 +1,92 @@
+.tree {
+    display: flex;
+    flex-direction: column;
+   
+    align-items: center;
+    margin: 5%;
+    position: relative;
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 8%;
+  }
+ 
+  .trunk {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 100%;
+    background-color: rgba(33, 158, 188, 1);;
+  }
+  
+  .branch {
+    margin-top:5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ 
+    width: 40%;
+    height:auto;
+   
+  }
+ 
+  .branchleft {
+    margin-right: auto;
+  }
+  
+  .branchright {
+    margin-left: auto;
+  }
+  
+  .leaf-icon {
+   width:30px;
+   height:auto;
+
+  }
+  
+  .question,
+  .answer {
+    display: flex;
+    align-items: center;
+    background-color:rgba(33, 158, 188, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+  }
+
+  
+  .question-icon,
+  .answer-icon {
+    font-size: 20px;
+    margin-right: 10px;
+    color: rgba(33, 158, 188, 1);
+  }
+  .answer-icon{ color:rgba(2, 48, 71, 1) ;}
+  .answer-text {
+    font-size: 16px;
+    color:rgba(2, 48, 71, 1) ;
+  }
+  .question-text{font-size: 20px;
+font-weight: bold;
+color: rgba(33, 158, 188, 1);}
+  
+  .horizontal-line {
+    width:70%;
+    height: 3px;
+    background-color: rgba(33, 158, 188, 1);;
+    margin-bottom: 2px;
+   
+  }
+  .lef{ margin-left: 80%;}
+  .righ{margin-right:80%;}
+  
+  .branch:nth-child(odd) .leaf {
+    animation: slide-in-left 1s ease-out;
+  }
+  
+  .branch:nth-child(even) .leaf {
+    animation: slide-in-right 1s ease-out;
+  }
+  
+ 

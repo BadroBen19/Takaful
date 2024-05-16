@@ -1,0 +1,13 @@
+{
+  "donations": [
+    {
+      "id": 1,
+      "pictureUrl": "https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_3x2.jpg?w=1436&h=958",
+      "title": "Example Donation",
+      "username": "abderrahmane jamal",
+      "amount": 100,
+      "target": 500,
+      "description": "This is an example donation description."
+    }
+  ]
+}

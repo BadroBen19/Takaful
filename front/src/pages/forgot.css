@@ -1,0 +1,54 @@
+* {
+    
+    margin: 0;
+    padding: 0;
+    font-family:'Roboto', Arial, sans-serif;
+    color: rgba(2, 48, 71, 1);
+  }
+  .forg1{width:42%;
+    height:400px ;
+    border:2px solid rgba(33, 158, 188, 1);
+margin-left: 29%;
+margin-top: 200px;
+margin-bottom: 200px;
+
+  }
+  .tfg1{font-size:35px;
+    font-weight: bolder;
+    margin-left: 150px;
+    margin-top: 80px;
+    margin-bottom: 35px;
+
+
+  }
+  
+
+
+  .text1{margin-left: 160px;
+    font-size: 16px;
+    margin-bottom: 30px;
+
+  }
+  #input{ 
+    margin-left:30%;
+   width:40%;
+   height:35px;
+
+   
+  }
+  .rpass{
+    height: 40px;
+    width:20%;
+    color:white;
+    background: rgba(33, 158, 188, 1);
+    border-radius: 5px;
+    border-color:rgba(33, 158, 188, 1); ;
+    border:none ;
+    margin-top:30px;
+    margin-left:260px;
+    margin-bottom: 12px;
+    font-weight: bolder;
+    
+  
+  }
+  

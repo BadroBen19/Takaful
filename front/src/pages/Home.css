@@ -1,0 +1,185 @@
+*{margin: 0px;
+    padding: 0px;
+    font-family: 'Roboto', Arial, sans-serif;
+    color:rgba(2, 48, 71, 1);
+}
+body{margin-top: 0px;}
+.t1z{ font-size: 60px;
+    font-weight:bolder;
+    margin-bottom: -20px;
+    margin-left: 60px;
+
+}
+.fade-out {
+
+    transition: opacity 0.5s ease;
+  
+    opacity: 0;
+  
+  }
+  
+  
+  .fade-in {
+  
+    transition: opacity 0.5s ease;
+  
+    opacity: 1;
+  
+  }
+.t1a{font-size: 60px;
+    font-weight:bolder;
+    color:rgba(33,158,188, 1);
+    margin-left: 60px;
+
+}
+.in2{margin-top: 40px;
+    margin-right:-20px;
+}
+
+.img1{
+margin-right: 120px;
+    width:700px;
+    height: 550px;
+   /* background-image: url("image/Ellipse\ 10.jpg") ;
+    background-repeat: no-repeat;
+    background-size: 300px;*/
+    
+
+}
+.inter{
+    display:flex;
+    flex-direction:row;
+ justify-content: end;
+    align-items: start;
+    /*margin-top: 120px;*/
+}
+.in2{display:flex;
+}
+.ro{background-image: url("../image/Ellipse\ 10.jpg") ;
+    background-repeat: no-repeat;
+    background-size: 300px;
+    margin-top: 40px;
+    
+ 
+
+}
+.ppp1{
+    font-size: 28px;
+    margin-top: 40px;
+    margin-left: 60px;
+}
+#bth1{
+   margin-right: 20px;
+height: 70px;
+width:200px;
+border-width:2px;
+background-color: white;
+font-size: 22px;
+border: 1px solid rgba(33,158,188, 1) ;
+border-radius: 5px;
+
+}
+#bth2{
+    
+    height: 70px;
+    width:200px;
+    background-color:rgba(33,158,188, 1) ;
+color:white;
+font-size: 22px;
+border-radius: 5px;
+cursor: pointer;
+border:none;
+
+}
+
+    .page1 {
+       
+       filter: brightness(100%);
+
+  transition: filter 0.3s ease-in-out;
+      }
+      .page1.shade {
+
+      filter: brightness(50%);
+      
+      }
+      
+
+.bot{
+    display:flex;
+    margin-left:230px;
+    margin-top: 80px;
+}
+#bth1:hover{transform: scale(1.1);}
+#bth2:hover{transform: scale(1.1);}
+*{margin: 0px;
+    padding: 0px;
+    font-family: 'Roboto', Arial, sans-serif;
+    color:rgba(2, 48, 71, 1);
+}
+.t21{font-size: 55px;
+    font-weight: bold;
+    margin-left: 230px;
+
+}
+.ror{width:48%;
+    background-image: url("../image/Ellipse\ 10.jpg") ;
+    background-repeat:no-repeat;
+    background-size: 300px;
+    margin-left: -80px;
+
+
+}
+
+.mpi{
+    margin-left: 80px;
+width:650px;
+height: 650px;
+}
+.inter2{display:flex;
+    margin-top: 160px;
+
+}
+.pp21{font-size: 33px;
+margin-left: 230px;
+margin-top: 20px;
+
+}
+#bbt1{
+       
+    height: 85px;
+    width:280px;
+    background-color:rgba(33,158,188, 1) ;
+color:white;
+border: none;
+font-size: 30px;
+border-radius: 10px;
+cursor: pointer;
+margin-left: 170px;
+}
+#bbt1:hover{transform: scale(1.1);}
+.t212{font-size: 55px;
+    font-weight: bold;
+    margin-left: 230px;
+    margin-top: 100px;
+
+}
+.ror2{width:48%;
+    background-image: url("../image/Ellipse\ 10.jpg") ;
+    background-repeat:no-repeat;
+    background-size: 300px;
+    
+
+}
+
+.mpi2{
+    z-index:15632325;
+    margin-left: 180px;
+width:600px;
+height: 550px;
+}
+
+
+
+
+

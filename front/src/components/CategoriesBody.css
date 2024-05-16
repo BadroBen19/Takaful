@@ -1,0 +1,13 @@
+.CategoriesBody {
+    width: calc(100% - 120px);
+        margin: 0 auto;
+        padding: 0 60px;
+  }
+  
+  .canote-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+  }
