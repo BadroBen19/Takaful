@@ -1,5 +1,5 @@
 //testeteste
-const signModel = require("../models/signModel");
+const signModel = require("../models");
 const jwt = require("jsonwebtoken");
 const catchAsync = require("../outilles/catchAsync");
 const bcrypt = require("bcrypt");
@@ -77,7 +77,7 @@ exports.protect = catchAsync(async (req, res, next) => {
 });
 
 exports.getSignup = async (req, res) => {
-  // return res.redirect("pager.html");
+  return res.redirect("pager.html");
 };
 
 exports.getLogin = async (req, res) => {
@@ -85,34 +85,32 @@ exports.getLogin = async (req, res) => {
 };
 
 exports.signUp = catchAsync(async (req, res, next) => {
-  const newUser = await signModel.create({
+  const dataUser = await signModel.create({
     user: req.body.user,
     Email: req.body.Email,
     Password: req.body.Password,
     PasswordConfirm: req.body.PasswordConfirm,
     Title: req.body.Title,
     selectedCategory: req.body.selectedCategory,
+    idNumber: req.body.idNumber,
     nCCP: req.body.nCCP,
     amount: req.body.amount,
     description: req.body.description,
-    // image: req.body.image,
+    image: req.body.image,
   });
-
-  // Create and send JWT token
-  createSendToken(newUser, 201, res);
+  const token = signToken(dataUser._id);
+  await dataUser.save();
+  // res.redirect("login.html");
 });
-
 exports.login = catchAsync(async (req, res, next) => {
   try {
     const user = await signModel.findOne({ Email: req.body.Email });
-    console.log(user);
     if (user) {
       // Comparaison des mots de passe cryptés
       const passwordMatch = await bcrypt.compare(
         req.body.Password,
         user.Password
       );
-      console.log(passwordMatch);
       if (passwordMatch) {
         // Mot de passe correct
         const token = signToken(user._id);

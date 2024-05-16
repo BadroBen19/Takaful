@@ -9,7 +9,7 @@ const signUpSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-    // validate: [validator.isEmail, "please provide a valid Email"],
+    validate: [validator.isEmail, "please provide a valid Email"],
   },
   Password: {
     type: String,
@@ -28,10 +28,11 @@ const signUpSchema = new mongoose.Schema({
   },
   Title: { type: String, required: true },
   selectedCategory: { type: String, required: true },
+  idNumber: { type: Number, required: true },
   nCCP: { type: Number, required: true },
   amount: { type: Number, required: true },
   description: { type: String, trim: true, required: true },
-  image: { type: String, required: false },
+  image: { type: [String], required: true },
   passwordResetToken: String,
   passwordResetExpires: Date,
   passwordChangedAt: Date,
@@ -40,6 +41,11 @@ const signUpSchema = new mongoose.Schema({
     default: true,
     select: false,
   },
+});
+signUpSchema.pre(/^find/, function (next) {
+  // this points to the current query
+  this.find({ active: { $ne: false } });
+  next();
 });
 signUpSchema.methods.correctPassword = async function (
   candidatePassword,
