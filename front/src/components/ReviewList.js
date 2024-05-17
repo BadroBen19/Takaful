@@ -1,14 +1,13 @@
-
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import Review from './Review';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import Review from "./Review";
 
 const ReviewList = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/getReviews") // replace with your API endpoint
+      .get("http://localhost:5000/getReviews") // replace with your API endpoint
       .then((response) => {
         setReviews(response.data);
       })

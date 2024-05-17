@@ -5,10 +5,10 @@ const tourRoutes = require("./routes/tourRoutes");
 const cardRoutes = require("./routes/cardRoutes");
 const reviewRoutes = require("./routes/reviewRoutes");
 const dotenv = require("dotenv");
-const cors = require("cors");
 const AppError = require("./outilles/appError");
 const globalErrorHandler = require("./Controllers/errorController");
 dotenv.config({ path: "./config.env" });
+const cors = require("cors");
 
 mongoose
   .connect(

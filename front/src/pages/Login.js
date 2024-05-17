@@ -31,7 +31,9 @@ export default function Login() {
       console.log({ response });
       if (!response.data.token) return;
       console.log(response.data.token);
-      localStorage.setItem("token", response.data.token);
+      const token = response.data.token;
+      localStorage.setItem("authToken", token);
+      console.log(localStorage);
       history.push("/services");
 
       // Effacez les champs de formulaire

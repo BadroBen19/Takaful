@@ -1,4 +1,4 @@
-const User = require("../models");
+const User = require("../models/signModel");
 const catchAsync = require("./../outilles/catchAsync");
 const AppError = require("./../outilles/appError");
 

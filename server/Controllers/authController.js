@@ -1,5 +1,5 @@
 //testeteste
-const signModel = require("../models");
+const signModel = require("../models/signModel");
 const jwt = require("jsonwebtoken");
 const catchAsync = require("../outilles/catchAsync");
 const bcrypt = require("bcrypt");
