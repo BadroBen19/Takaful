@@ -33,7 +33,7 @@ const CanoteList = () => {
             key={index}
             title={canote.Title}
             ProfileName={canote.user}
-            percentage={5}
+            percentage={50}
             imageUrl={canote.image}
             {...canote}
           />

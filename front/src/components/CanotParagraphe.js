@@ -1,5 +1,3 @@
-import React from "react";
-
 const CanotParagraphe = (props) => {
   return (
     <div
@@ -16,15 +14,15 @@ const CanotParagraphe = (props) => {
         <p
           style={{
             fontFamily: "Roboto",
-            height: "470px",
-            fontSize: "37px",
-            fontWeight: 280,
-            lineHeight: "75px",
+            fontSize: "35px",
+            fontWeight: 400,
+            lineHeight: "74px",
             letterSpacing: "-0.015em",
             textAlign: "left",
             background:
               "linear-gradient(to right, rgba(2,48,71,0), rgba(2,48,71,0.07), rgba(2,48,71,0))",
             borderRadius: "30px 50px 91px 51px",
+            height: "50%",
           }}
         >
           {props.CanotParagraphe}
@@ -33,10 +31,9 @@ const CanotParagraphe = (props) => {
       <div style={{ flexBasis: "50%" }}>
         <img
           style={{
-            width: "726px",
-            height: "491px",
+            width: "100%",
+            height: "auto",
             borderRadius: "50px 50px 191px 191px",
-            opacity: "0px",
           }}
           src={props.imageUrl}
           alt=""
@@ -45,5 +42,4 @@ const CanotParagraphe = (props) => {
     </div>
   );
 };
-
 export default CanotParagraphe;

@@ -1,19 +1,22 @@
-// Canote.js
-import { Image, ProgressBar } from "react-bootstrap";
 import "./Canote.css";
+
 const Canote = (props) => {
   return (
     <div className="canote">
       <div className="canote-image">
-        <Image src={props.imageUrl} />
+        <img src={props.imageUrl} alt="" />
       </div>
       <div className="canote-content">
-        <h1>{props.title}</h1>
+        <div className="canote-title">
+          <h1>{props.title}</h1>
+        </div>
         <div className="canote-profile">
-          <Image src={props.profileImageUrl} />
+          <img src={props.profileImageUrl} alt="" />
           <h2>{props.ProfileName}</h2>
         </div>
-        <ProgressBar className="custom-progress-bar" now={props.percentage} />
+        <div className="progres-bar">
+          <div className="progres" style={{ width: `${props.percentage}%` }}></div>
+        </div>
       </div>
     </div>
   );

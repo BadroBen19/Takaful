@@ -16,11 +16,19 @@
 .canote-content {
   flex: 50%;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.canote-title {
+  flex: 1;
+  overflow: hidden;
 }
 
 .canote-profile {
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .canote-profile img {
@@ -29,9 +37,16 @@
   border-radius: 50%;
 }
 
-.progress-bar {
-  background-color: #fb8500 !important; /* Set the color for the progress */
-  height: "70px" !important;
-  background-color: "rgba(33, 158, 188, 0.39" !important;
-  color: #0d6efd !important; /* Set the color for the text label */
+.progres-bar {
+  background-color: rgba(33, 158, 188, 0.39);
+  height: 70px;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 7px 25px;
+}
+
+.progres {
+  height: 70px;
+  background-color: rgba(251, 133, 0, 1);
+  transition: width 0.3s ease;
 }
