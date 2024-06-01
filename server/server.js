@@ -9,7 +9,9 @@ const AppError = require("./outilles/appError");
 const globalErrorHandler = require("./Controllers/errorController");
 dotenv.config({ path: "./config.env" });
 const cors = require("cors");
-
+const multer = require("multer");
+const path = require("path");
+const signModel = require("./models/signModel");
 mongoose
   .connect(
     "mongodb+srv://mabenblal:0z2Cdm5TiWGzKf9K@cluster0.auxy0zc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
@@ -25,7 +27,7 @@ mongoose
 const app = express();
 
 app.use(cors());
-app.use(express.static("Html"));
+app.use(express.static("publics"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -39,6 +41,19 @@ app.all("*", (req, res, next) => {
 });
 
 app.use(globalErrorHandler);
+
+//multer image temporairement ici
+
+// app.post('/upload', upload.single('image'), async (req, res) => {
+//   try {
+//     const { filename } = req.file;
+//     const image = new Image({ image: filename });
+//     await signModel.save();
+//     res.status(201).json(image);
+//   } catch (error) {
+//     res.status(500).json({ error: 'Failed to upload image' });
+//   }
+// });
 
 app.listen(5000, () => {
   console.log(`App running on port 3001...`);

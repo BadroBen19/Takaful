@@ -7,6 +7,13 @@ const AppError = require("../outilles/appError");
 const sendEmail = require("../outilles/email");
 const crypto = require("crypto");
 const { promisify } = require("util");
+const multer = require("multer");
+const path = require("path");
+const express = require("express");
+
+const app = express();
+
+app.use(express.static("publics/images"));
 
 const signToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -84,23 +91,58 @@ exports.getLogin = async (req, res) => {
   return res.redirect("login.html");
 };
 
+//multer
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "publics/images");
+  },
+  filename: (req, file, cb) => {
+    cb(
+      null,
+      file.fieldname + "_" + Date.now() + path.extname(file.originalname)
+    );
+  },
+});
+const upload = multer({
+  storage: storage,
+});
+
 exports.signUp = catchAsync(async (req, res, next) => {
-  const dataUser = await signModel.create({
-    user: req.body.user,
-    Email: req.body.Email,
-    Password: req.body.Password,
-    PasswordConfirm: req.body.PasswordConfirm,
-    Title: req.body.Title,
-    selectedCategory: req.body.selectedCategory,
-    idNumber: req.body.idNumber,
-    nCCP: req.body.nCCP,
-    amount: req.body.amount,
-    description: req.body.description,
-    image: req.body.image,
+  upload.single("image")(req, res, async function (err) {
+    if (err) {
+      return next(err); // Passer l'erreur à Express pour qu'elle soit gérée par le middleware global d'erreur
+    }
+
+    try {
+      const dataUser = await signModel.create({
+        user: req.body.user,
+        Email: req.body.Email,
+        Password: req.body.Password,
+        PasswordConfirm: req.body.PasswordConfirm,
+        Title: req.body.Title,
+        selectedCategory: req.body.selectedCategory,
+        idNumber: req.body.idNumber,
+        nCCP: req.body.nCCP,
+        amount: req.body.amount,
+        description: req.body.description,
+        image: req.file.filename, // Sauvegarder le nom du fichier dans la base de données
+      });
+
+      const token = signToken(dataUser._id);
+      await dataUser.save();
+
+      res.status(201).json({
+        status: "success",
+        data: {
+          user: dataUser,
+          token: token,
+        },
+      });
+    } catch (error) {
+      next(error); // Passer l'erreur à Express pour qu'elle soit gérée par le middleware global d'erreur
+    }
   });
-  const token = signToken(dataUser._id);
-  await dataUser.save();
-  // res.redirect("login.html");
 });
 exports.login = catchAsync(async (req, res, next) => {
   try {

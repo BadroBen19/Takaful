@@ -4,7 +4,10 @@ const Canote = (props) => {
   return (
     <div className="canote">
       <div className="canote-image">
-        <img src={props.imageUrl} alt={props.title} />
+        <img
+          src={"http://localhost:5000/images/"+props.imageUrl}
+          alt={props.title}
+        />
       </div>
       <div className="canote-content">
         <div className="canote-title">
@@ -15,7 +18,10 @@ const Canote = (props) => {
           <h2>{props.ProfileName}</h2>
         </div>
         <div className="progres-bar">
-          <div className="progres" style={{ width: `${props.percentage}%` }}></div>
+          <div
+            className="progres"
+            style={{ width: `${props.percentage}%` }}
+          ></div>
         </div>
       </div>
     </div>

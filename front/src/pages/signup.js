@@ -29,7 +29,7 @@ function SignUp() {
   });
 
   const [errors, setErrors] = useState({});
-
+  const [file, setfile] = useState();
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     setErrors({ ...errors, [e.target.name]: "" });
@@ -76,34 +76,17 @@ function SignUp() {
     //   setErrors(newErrors);
     // } else {
     try {
-      const formDataToSend = {
-        user: formData.user,
-        Email: formData.Email,
-        Password: formData.Password,
-        PasswordConfirm: formData.PasswordConfirm,
-        Title: formData.Title,
-        selectedCategory: formData.selectedCategory,
-        nCCP: formData.nCCP,
-        amount: formData.amount,
-        description: formData.description,
-        // image: formData.image,
-      };
-      const response = await axios.post(
-        "http://localhost:5000/sign_up",
-        formDataToSend,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const form = new FormData();
+      for (let key in formData) {
+        form.append(key, formData[key]);
+      }
+
+      const response = await axios.post("http://localhost:5000/sign_up", form, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       console.log({ response });
-      // await axios
-      //   .post("http://localhost:5000/sign_up", formDataToSend)
-      //   .then((response) => {
-      //     console.log("Submission successful:", response.data);
-      //     console.log(response);
-      //   });
 
       // Effacez les champs de formulaire
       setFormData({
@@ -130,7 +113,7 @@ function SignUp() {
         <img className="photosi" src={photos} alt="Photos" />
       </div>
       <div className="signform">
-        <form onSubmit={handleSubmit} encType="application/json">
+        <form onSubmit={handleSubmit}>
           <div className="input">
             <label htmlFor="user" className="input-label">
               <FaUser className="input-icon" />
