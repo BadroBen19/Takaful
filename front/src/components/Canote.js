@@ -4,14 +4,14 @@ const Canote = (props) => {
   return (
     <div className="canote">
       <div className="canote-image">
-        <img src={props.imageUrl} alt="" />
+        <img src={props.imageUrl} alt={props.title} />
       </div>
       <div className="canote-content">
         <div className="canote-title">
           <h1>{props.title}</h1>
         </div>
         <div className="canote-profile">
-          <img src={props.profileImageUrl} alt="" />
+          <img src={props.profileImageUrl} alt={props.ProfileName} />
           <h2>{props.ProfileName}</h2>
         </div>
         <div className="progres-bar">
