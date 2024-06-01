@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Canote from "./Canote";
 import "./CanoteList.css";
-
+import {link} from "react-router-dom";
 const CanoteList = ({ category }) => {
   const [canoteData, setCanoteData] = useState([]);
   const [loading, setLoading] = useState(true);

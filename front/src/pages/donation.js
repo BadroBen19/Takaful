@@ -43,7 +43,7 @@ const Donation = ({
 
       <div className='lfog'>
       <div className="left-container">
-        <img src={pictureUrl} alt="There is no picture!" className="valid-picture" />
+        <img src={"http://localhost:5000/images/" +{Image}  } alt="There is no picture!" className="valid-picture" />
       </div>
       <div className="right-container">
         <div className="post-info">

@@ -1,26 +1,26 @@
 // App.js
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Navbar from "./pages/Navbar";
-import Footer from "./pages/Footer";
-import Home from "./pages/Home";
-import AboutUs from "./pages/aboutUs";
-import Services from "./pages/services";
-import SignUp from "./pages/signup";
-import FAQs from "./pages/FAQs";
-import Setting from "./pages/setting";
-import Forgot from "./pages/Forgot";
-import Donationn from "./pages/donationn";
-import Login from "./pages/Login";
-import Email from "./pages/email";
-import Change from "./pages/change";
-import NotFound from "./pages/NotFound";
-import DonationForm from "./pages/DonationForm";
-import Testimonies from "./pages/Testimonies";
-import Categories from "./pages/Categories"; // Named import for Categories
-import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import React from "react";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import categoryRoutes from "./categoryRoutes";
+import Categories from "./pages/Categories"; // Named import for Categories
+import DonationForm from "./pages/DonationForm";
+import FAQs from "./pages/FAQs";
+import Footer from "./pages/Footer";
+import Forgot from "./pages/Forgot";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Navbar from "./pages/Navbar";
+import NotFound from "./pages/NotFound";
+import Testimonies from "./pages/Testimonies";
+import AboutUs from "./pages/aboutUs";
+import Change from "./pages/change";
+import Donationn from "./pages/donationn";
+import Email from "./pages/email";
+import Services from "./pages/services";
+import Setting from "./pages/setting";
+import SignUp from "./pages/signup";
 
 function App() {
   return (
@@ -34,7 +34,7 @@ function App() {
         <Route path="/FAQs" component={FAQs} />
         <Route path="/setting" component={Setting} />
         <Route path="/forgot" component={Forgot} />
-        <Route path="/donationn" component={Donationn} />
+        <Route path="/donation" component={Donationn} />
         <Route path="/login" component={Login} />
         <Route path="/email" component={Email} />
         <Route path="/change" component={Change} />

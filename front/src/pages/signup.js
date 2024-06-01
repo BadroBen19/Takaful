@@ -27,7 +27,20 @@ function SignUp() {
     description: "",
     image: null,
   });
-
+  const resetForm = () => {
+    setFormData({
+      user: "",
+      Email: "",
+      Password: "",
+      PasswordConfirm: "",
+      Title: "",
+      selectedCategory: "",
+      nCCP: "",
+      amount: "",
+      description: "",
+      image: null,
+    });
+  };
   const [errors, setErrors] = useState({});
   const [file, setfile] = useState();
   const handleChange = (e) => {
@@ -87,20 +100,7 @@ function SignUp() {
         },
       });
       console.log({ response });
-
-      // Effacez les champs de formulaire
-      setFormData({
-        user: "",
-        Email: "",
-        Password: "",
-        PasswordConfirm: "",
-        Title: "",
-        selectedCategory: "",
-        nCCP: "",
-        amount: "",
-        description: "",
-        image: null,
-      });
+      resetForm();
     } catch (error) {
       console.error(error.response.data);
     }
