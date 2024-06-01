@@ -10,7 +10,13 @@
 .canote-image {
   flex: 50%;
   display: flex;
-  border-radius: 30px 50px 91px 51px;
+  overflow: hidden; 
+}
+
+.canote-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
 }
 
 .canote-content {
