@@ -38,7 +38,7 @@ const DonationForm = () => {
 
   useEffect(() => {
     axios
-      .get("link t api")
+      .get("localhost:5000/")
       .then((response) => {
         setTitle(response.data.title);
         setUserName(response.data.userName);
