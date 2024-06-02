@@ -72,7 +72,7 @@ const DonationForm = () => {
 
   return (
     <div className="root">
-      <div className="container">
+      <div className="container1">
         <div className="photo1">
           <img src={hand} alt="" />
         </div>
