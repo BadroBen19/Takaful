@@ -7,7 +7,7 @@
   max-width: 1200px;
 }
 
-.photo {
+.photo1 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,7 +21,7 @@
   background-color: white;
 }
 
-.photo img {
+.photo1 img {
   height: 800px;
   width: 100%;
 }
