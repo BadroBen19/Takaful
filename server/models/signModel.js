@@ -29,7 +29,7 @@ const signUpSchema = new mongoose.Schema({
   Title: { type: String, required: true },
   selectedCategory: { type: String, required: true },
   idNumber: { type: Number, required: false },
-  nCCP: { type: Number, required: true },
+  nCCP: { type: String, required: true },
   amount: { type: Number, required: true },
   description: { type: String, trim: true, required: true },
   image: { type: [String], required: true },

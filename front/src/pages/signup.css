@@ -11,14 +11,13 @@
   display: flex;
   justify-content: right;
   background-color: rgba(33, 158, 188, 1);
-  height:20vh;
-padding-left:25px;
+  height: 20vh;
+  padding-left: 25px;
 }
 
 .photosi {
   height: 22vh;
-  width:22vh;
- 
+  width: 22vh;
 }
 
 input {
@@ -49,7 +48,7 @@ input:hover {
 }
 
 .input input {
-  padding-left: 30px; 
+  padding-left: 30px;
 }
 
 .input-icon {
@@ -58,7 +57,6 @@ input:hover {
   transform: translateY(-50%);
   left: 10px;
   color: rgba(2, 48, 71, 1);
-  
 }
 
 .signform {
@@ -71,15 +69,35 @@ input:hover {
 }
 
 .ppp {
-  font-size: 0.9rem;
+  font-size: 1.2rem;
 
   color: rgba(2, 48, 71, 1);
   margin: 10px;
 }
-.li9bal{margin-bottom: 20px;}
+.li9bal {
+  margin-bottom: 20px;
+}
 .confirmi {
   text-align: right;
   margin-left: 40px;
+}
+input[list="category"] {
+  margin: 7px 8px;
+  text-align: center;
+  width: 100%;
+  height: 50px;
+  border: 1px solid rgba(67, 160, 190, 1);
+  border-radius: 5px;
+  font-size: 20px;
+}
+input[type="text"] {
+  margin: 7px 8px;
+  text-align: center;
+  width: 100%;
+  height: 50px;
+  border: 1px solid rgba(67, 160, 190, 1);
+  border-radius: 5px;
+  font-size: 20px;
 }
 
 input[type="submit"] {
@@ -114,16 +132,16 @@ input[type="file"] {
   color: rgba(2, 48, 71, 1);
   cursor: pointer;
   font-size: 1.8rem;
-  margin-left:220px;
-
-  
-
+  margin-left: 220px;
 }
 
 .file-upload-icon:hover {
   color: rgba(33, 158, 188, 1);
   font-size: 2.3rem;
-
+}
+.dod {
+  margin-top: 30px;
+  width: 100%;
 }
 
 .error {
@@ -133,8 +151,9 @@ input[type="file"] {
   width: 90%;
   margin-left: 7px;
 }
-.bottom{ margin-top: 30px;}
-.clockkk{}
+
+.clockkk {
+}
 @media screen and (min-width: 920px) {
   .container {
     display: flex;

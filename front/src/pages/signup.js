@@ -157,7 +157,6 @@ function SignUp() {
             {errors.Password && (
               <span className="error">{errors.Password}</span>
             )}
-            s
           </div>
           <div className="input">
             <label htmlFor="PasswordConfirm" className="input-label">
@@ -219,8 +218,8 @@ function SignUp() {
               <FaMoneyCheck className="input-icon" />
             </label>
             <input
-              type="number"
-              placeholder="CCP number"
+              type="text"
+              placeholder="Paypal Email"
               id="nCCP"
               name="nCCP"
               value={formData.nCCP}
@@ -278,13 +277,11 @@ function SignUp() {
               {errors.image && <span className="error">{errors.image}</span>}
             </div>
           </div>
-          <div className="bottom">
-            <input type="submit" value="Sign up" />
-          </div>
+
+          <input className="dod" type="submit" value="Sign up" />
         </form>
       </div>
     </div>
   );
 }
-
 export default SignUp;
