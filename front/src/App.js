@@ -20,8 +20,7 @@ import Email from "./pages/email";
 import Services from "./pages/services";
 import Setting from "./pages/setting";
 import SignUp from "./pages/signup";
-
-
+import PrivateRoute from "./pages/PrivateRoute";
 function App() {
   return (
     <Router>
@@ -32,7 +31,7 @@ function App() {
         <Route path="/services" component={Services} />
         <Route path="/signup" component={SignUp} />
         <Route path="/FAQs" component={FAQs} />
-        <Route path="/setting" component={Setting} />
+        <PrivateRoute path="/setting" component={Setting} />
         <Route path="/forgot" component={Forgot} />
         <Route path="/donation" component={Donationn} />
         <Route path="/login" component={Login} />

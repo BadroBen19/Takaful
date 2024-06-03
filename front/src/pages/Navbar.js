@@ -22,10 +22,16 @@ export default function Navbar() {
         </div>
 
         <div className={`nav__link ${isNavExpanded ? "show" : "hide"}`}>
-          <a className="na" href="/services">Services</a>
-          <a className="na" href="/about">About Us</a>
-          
-          <a className="na" href="/FAQs">FAQs</a>
+          <a className="na" href="/services">
+            Services
+          </a>
+          <a className="na" href="/about">
+            About Us
+          </a>
+
+          <a className="na" href="/FAQs">
+            FAQs
+          </a>
         </div>
       </nav>
     </header>
