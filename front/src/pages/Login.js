@@ -1,17 +1,18 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import phlog from "../image/1-removebg-preview .png";
 import "./login.css";
+
 export default function Login() {
   const [formData, setFormData] = useState({
     Email: "",
     Password: "",
   });
-  const history = useHistory();
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
@@ -19,6 +20,7 @@ export default function Login() {
         Email: formData.Email,
         Password: formData.Password,
       };
+
       const response = await axios.post(
         "http://localhost:5000/login",
         formDataToSend,
@@ -28,13 +30,21 @@ export default function Login() {
           },
         }
       );
+
       console.log({ response });
+
       if (!response.data.token) return;
-      console.log(response.data.token);
+
       const token = response.data.token;
       localStorage.setItem("authToken", token);
       console.log(localStorage);
-      history.push("/services");
+
+      // Redirigez vers la page d'accueil
+      window.location.href = "/";
+      // Rechargez la page après une courte pause pour s'assurer que la redirection s'est produite
+      setTimeout(() => {
+        window.location.reload();
+      }, 100);
 
       // Effacez les champs de formulaire
       setFormData({
@@ -72,7 +82,7 @@ export default function Login() {
           />
           <button className="bt111a">Login</button>
           <button className="bt222a">Create new account</button>
-          <a class="forget" href="./Forgot">
+          <a className="forget" href="./Forgot">
             Forgot password?
           </a>
         </form>

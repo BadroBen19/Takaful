@@ -13,6 +13,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Navbar from "./pages/Navbar";
 import NotFound from "./pages/NotFound";
+import PrivateRoute from "./pages/PrivateRoute";
 import Testimonies from "./pages/Testimonies";
 import AboutUs from "./pages/aboutUs";
 import Change from "./pages/change";
@@ -21,7 +22,6 @@ import Email from "./pages/email";
 import Services from "./pages/services";
 import Setting from "./pages/setting";
 import SignUp from "./pages/signup";
-import PrivateRoute from "./pages/PrivateRoute";
 
 function App() {
   return (
@@ -29,6 +29,7 @@ function App() {
       <Navbar />
 
       <Switch>
+        <Route path="/donateforme" exact component={DonationForm} />
         <Route path="/" exact component={Home} />
         <Route path="/set" exact component={Setting} />
         <Route path="/about" component={AboutUs} />
@@ -37,7 +38,7 @@ function App() {
         <Route path="/FAQs" component={FAQs} />
         <PrivateRoute path="/setting" component={Setting} />
         <Route path="/forgot" component={Forgot} />
-        <Route path="/donation" component={Donationn} />
+        <Route path="/donation/:id" component={Donationn} />
         <Route path="/login" component={Login} />
         <Route path="/email" component={Email} />
         <Route path="/change" component={Change} />

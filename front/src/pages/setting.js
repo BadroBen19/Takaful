@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleExclamation,
-  faUserPen,
+  faCircleUser,
+  faEnvelope,
+  faFilePen,
   faGear,
   faGreaterThan,
-  faUser,
-  faEnvelope,
   faLock,
-  faCircleUser,
-  faFilePen,
+  faUser,
+  faUserPen,
 } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState } from "react";
 import "./setting.css";
 
 // SideNav component

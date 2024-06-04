@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import puser from "../image/profile.jpg";
 import Canote from "./Canote";
 import "./CanoteList.css";
-import {link} from "react-router-dom";
 const CanoteList = ({ category }) => {
   const [canoteData, setCanoteData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -55,7 +55,8 @@ const CanoteList = ({ category }) => {
                 ProfileName={canote.user}
                 percentage={50}
                 imageUrl={imageUrl}
-                profileImageUrl={profileImageUrl}
+                // hna bdlt
+                profileImageUrl={puser}
                 {...canote}
               />
             );

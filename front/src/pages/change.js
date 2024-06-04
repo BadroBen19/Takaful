@@ -54,6 +54,8 @@ export default function Change() {
       <form onSubmit={handleSubmit}>
         <input
           type="password"
+          id="Password"
+          name="Password"
           placeholder="New Password"
           className="cp"
           value={password}
@@ -62,6 +64,8 @@ export default function Change() {
         <br />
         <input
           type="password"
+          name="passwordConfirm"
+          id="passwordConfirm"
           className="cp"
           placeholder="Confirm Your New Password"
           value={passwordConfirm}

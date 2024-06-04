@@ -174,12 +174,7 @@ exports.login = catchAsync(async (req, res, next) => {
 
 // exports.emailExist = catchAsync(async (req,res,next)=>{
 
-
-
 // })
-
-
-
 
 exports.forgotPassword = catchAsync(async (req, res, next) => {
   const user = await signModel.findOne({ Email: req.body.Email });

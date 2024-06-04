@@ -6,7 +6,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import "./donation.css";
-
+// addinng
 const Donation = ({
   pictureUrl,
   title,
@@ -40,7 +40,7 @@ const Donation = ({
       <div className="lfog">
         <div className="left-container">
           <img
-            src={`http://localhost:5000/images/${Image}`}
+            src={`http://localhost:5000/images/${pictureUrl}`}
             alt="There is no picture!"
             className="valid-picture"
           />
@@ -49,9 +49,9 @@ const Donation = ({
           <div className="post-info">
             <p
               style={{
-                fontSize: "1.2rem",
+                fontSize: "1.7rem",
                 textTransform: "capitalize",
-                margin: "7px",
+                margin: "10px",
                 fontWeight: "bold",
                 color: "rgba(2, 48, 71, 1)",
               }}
@@ -65,9 +65,9 @@ const Donation = ({
               <span
                 className="username"
                 style={{
-                  fontSize: "0.7rem",
+                  fontSize: "1.2rem",
                   color: "rgba(2, 48, 71, 1)",
-                  fontWeight: "bold",
+                  // fontWeight: "bold",
                   textTransform: "capitalize",
                 }}
               >
@@ -78,7 +78,7 @@ const Donation = ({
               <span
                 className="amount"
                 style={{
-                  fontSize: "0.7rem",
+                  fontSize: "1.4rem",
                   color: "rgba(2, 48, 71, 1)",
                   fontWeight: "bold",
                 }}
@@ -88,10 +88,10 @@ const Donation = ({
               </span>
               <span
                 className="target"
-                style={{ fontSize: "0.7rem", color: "rgba(2, 48, 71, 1)" }}
+                style={{ fontSize: "1rem", color: "rgba(2, 48, 71, 1)" }}
               >
                 {" "}
-                ( The target is to raise {target} $)
+                {target}
               </span>
             </div>
             <div className="progress-bar">
@@ -104,11 +104,11 @@ const Donation = ({
           <div className="actions">
             <button className="donate-btn">
               {" "}
-              <a href="/donate">
+              <a href="/donateforme">
                 <span
                   style={{
                     color: "white",
-                    fontSize: "0.8rem",
+                    fontSize: "1.1rem",
                     textTransform: "capitalize",
                     fontWeight: "bold",
                   }}
@@ -216,7 +216,7 @@ const Donation = ({
             )}
 
             {showReportModal && (
-              <div id="reportModal" className="modal">
+              <div id="reportModal" className="diaad">
                 <div className="contenuu">
                   <span className="closereport" onClick={closeReportModal}>
                     &times;
