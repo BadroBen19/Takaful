@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleExclamation,
-  faUserPen,
+  faCircleUser,
+  faEnvelope,
+  faFilePen,
   faGear,
   faGreaterThan,
-  faUser,
-  faEnvelope,
   faLock,
-  faCircleUser,
-  faFilePen,
+  faUser,
+  faUserPen,
 } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState } from "react";
 import "./setting.css";
 
 // SideNav component
@@ -52,7 +52,7 @@ const NavItem = ({ icon, name, onClick }) => {
 
 // EditProfile component
 const EditProfile = () => {
-  const [userName, setUserName] = useState("");
+  const [user, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -66,7 +66,7 @@ const EditProfile = () => {
     }
 
     const userProfileData = {
-      userName: userName || undefined,
+      user: user || undefined,
       email: email || undefined,
     };
 
@@ -165,14 +165,14 @@ const EditProfile = () => {
           icon={faCircleUser}
           style={{ color: "rgba(217, 217, 217, 1)", fontSize: "5rem" }}
         />
-        <span>{userName}</span>
+        <span>{user}</span>
       </div>
       <div className="profile-info">
         <div className="input-group">
           <input
             type="text"
             placeholder="Username"
-            value={userName}
+            value={user}
             onChange={(e) => setUserName(e.target.value)}
           />
           <FontAwesomeIcon icon={faUser} className="input-iconnn" />
