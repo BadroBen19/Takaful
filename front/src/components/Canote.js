@@ -1,5 +1,7 @@
 import "./Canote.css";
 import { Link } from "react-router-dom";
+import { CgProfile } from "react-icons/cg";
+
 
 const Canote = (props) => {
   return (
@@ -15,7 +17,9 @@ const Canote = (props) => {
           <h1>{props.title}</h1>
         </div>
         <div className="canote-profile">
-          <img src={props.profileImageUrl} alt={props.ProfileName} />
+        <CgProfile
+            style={{ fontSize: "4em", display: "block", textAlign: "left",margin:"7px" }}
+          />
           <h2>{props.ProfileName}</h2>
         </div>
         <div className="progres-bar">
