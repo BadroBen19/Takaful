@@ -33,7 +33,7 @@ const Donationn = () => {
       ) : (
         donationData && (
           <Donation
-            pictureUrl={donationData.imageUrl}
+            pictureUrl={donationData.image}
             title={donationData.Title}
             username={donationData.user}
             amount={donationData.amount}
