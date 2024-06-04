@@ -9,7 +9,6 @@ import {
   faEnvelope,
   faLock,
   faCircleUser,
-  faSignOutAlt,
   faFilePen,
 } from "@fortawesome/free-solid-svg-icons";
 import "./setting.css";
@@ -66,24 +65,46 @@ const EditProfile = () => {
       return;
     }
 
-    // Send data to backend
+    const userProfileData = {
+      userName: userName || undefined,
+      email: email || undefined,
+    };
+
+    const passwordData = {
+      currentPassword,
+      newPassword,
+      confirmNewPassword,
+    };
+
     try {
-      const response = await fetch("/api/edit-profile", {
-        method: "POST",
+      if (currentPassword || newPassword || confirmNewPassword) {
+        // Update password
+        const passwordResponse = await fetch(
+          "http://localhost:5000/updatePassword",
+          {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(passwordData),
+          }
+        );
+
+        if (!passwordResponse.ok) {
+          throw new Error("Failed to update password.");
+        }
+      }
+
+      // Update user profile (username and email)
+      const profileResponse = await fetch("http://localhost:5000/updateMe", {
+        method: "PATCH",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer " + localStorage.getItem("authToken"),
         },
-        body: JSON.stringify({
-          userName,
-          email,
-          currentPassword,
-          newPassword,
-          confirmNewPassword,
-        }),
+        body: JSON.stringify(userProfileData),
       });
 
-      if (!response.ok) {
+      if (!profileResponse.ok) {
         throw new Error("Failed to save changes.");
       }
 
@@ -104,7 +125,7 @@ const EditProfile = () => {
   const validateInputs = () => {
     let isValid = true;
 
-    if (!email.endsWith("@gmail.com") && email.trim() !== "") {
+    if (email && !email.endsWith("@gmail.com")) {
       setEmailError("Email must end with '@gmail.com'.");
       isValid = false;
     } else {
@@ -115,7 +136,7 @@ const EditProfile = () => {
       (currentPassword || newPassword || confirmNewPassword) &&
       !(currentPassword && newPassword && confirmNewPassword)
     ) {
-      setPasswordError("Please fill out all password fields..");
+      setPasswordError("Please fill out all password fields.");
       isValid = false;
     } else if (newPassword !== confirmNewPassword) {
       setPasswordError("New password and confirm new password must match.");
@@ -261,6 +282,7 @@ const ShareExperience = () => {
     </div>
   );
 };
+
 // About component
 const About = () => {
   return (

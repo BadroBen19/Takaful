@@ -15,18 +15,22 @@ import Navbar from "./pages/Navbar";
 import NotFound from "./pages/NotFound";
 import Testimonies from "./pages/Testimonies";
 import AboutUs from "./pages/aboutUs";
+import Change from "./pages/change";
 import Donationn from "./pages/donationn";
 import Email from "./pages/email";
 import Services from "./pages/services";
 import Setting from "./pages/setting";
 import SignUp from "./pages/signup";
 import PrivateRoute from "./pages/PrivateRoute";
+
 function App() {
   return (
     <Router>
       <Navbar />
+
       <Switch>
         <Route path="/" exact component={Home} />
+        <Route path="/set" exact component={Setting} />
         <Route path="/about" component={AboutUs} />
         <Route path="/services" component={Services} />
         <Route path="/signup" component={SignUp} />
@@ -36,7 +40,8 @@ function App() {
         <Route path="/donation" component={Donationn} />
         <Route path="/login" component={Login} />
         <Route path="/email" component={Email} />
-        <Route path="/Home" component={Home} />
+        <Route path="/change" component={Change} />
+
         <Route
           path="/donation-form"
           component={() => <DonationForm UserPfp="" />}
@@ -59,7 +64,6 @@ function App() {
         <Route path="/reviews" component={Testimonies} />
         <Route path="*" component={NotFound} />
       </Switch>
-      <change />
       <Footer />
     </Router>
   );

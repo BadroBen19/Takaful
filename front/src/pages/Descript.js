@@ -4,9 +4,9 @@ import use from "../image/User-140.png";
 import "./Descrip.css";
 
 export default function Descript() {
-  var usernamediaa = "abda9a 3imocha";
+  var usernamediaa = "User";
   var description =
-    "Galk ki nsmiw wladna gollha wlad lklbat lvahvujhc cbeljg vjgvzeul zvzuejgfz zedgzevdz zvzeudgz hzdvgzeude jegufufgef gefhgfu jerfgerulgerj trjghtrgurhg rrnjthjrthirth thjtjhrt rtkihhrtot rtkgrhtg rtkrthtyh tyhktyhj,yth tyhlthth (m(hty 41552656 52 6";
+    "I'm overwhelmed with gratitude for the generous donations I received for my fundraising campaign. Your support has made a significant difference in my life, and I'm thrilled to report that it has greatly helped me achieve my goals. Thank you again for your kindness and generosity!";
 
   return (
     <div className="toutdes">

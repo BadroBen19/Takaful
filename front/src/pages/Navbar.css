@@ -4,8 +4,10 @@
   font-family: "Roboto", Arial, sans-serif;
 }
 
-/*___________________________________________________________--navbar____________________________*/
-header{margin-bottom: 100px;}
+/*_________________________________________________________--navbar__________________________*/
+header {
+  margin-bottom: 100px;
+}
 .na {
   text-decoration: none;
   color: rgba(2, 48, 71, 1);
@@ -13,21 +15,27 @@ header{margin-bottom: 100px;}
 
   text-transform: uppercase;
 }
+.puser {
+  width: 70px;
+  margin-right: 8px;
+  margin-left: -100px;
+}
 
 .nav {
   position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1px;
   border: 0.3px solid rgba(33, 158, 188, 1);
-background-color: white;
-height: 80px;}
-/*___________________ta3 tlphn(wl7wayj li fi desktop wtlphn mochtaraka)_____________________________________________*/
+  background-color: white;
+  height: 80px;
+}
+/*_________________ta3 tlphn(wl7wayj li fi desktop wtlphn mochtaraka)___________________________________________*/
 /*navbar*/
 .logo {
   width: 180px;
