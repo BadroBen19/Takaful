@@ -37,7 +37,7 @@ function App() {
         <Route path="/FAQs" component={FAQs} />
         <PrivateRoute path="/setting" component={Setting} />
         <Route path="/forgot" component={Forgot} />
-        <Route path="/donation" component={Donationn} />
+        <Route path="/donation/:id" component={Donationn} />
         <Route path="/login" component={Login} />
         <Route path="/email" component={Email} />
         <Route path="/change" component={Change} />
