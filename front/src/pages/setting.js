@@ -52,7 +52,7 @@ const NavItem = ({ icon, name, onClick }) => {
 
 // EditProfile component
 const EditProfile = () => {
-  const [userName, setUserName] = useState("");
+  const [user, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -66,7 +66,7 @@ const EditProfile = () => {
     }
 
     const userProfileData = {
-      userName: userName || undefined,
+      user: user || undefined,
       email: email || undefined,
     };
 
@@ -165,14 +165,14 @@ const EditProfile = () => {
           icon={faCircleUser}
           style={{ color: "rgba(217, 217, 217, 1)", fontSize: "5rem" }}
         />
-        <span>{userName}</span>
+        <span>{user}</span>
       </div>
       <div className="profile-info">
         <div className="input-group">
           <input
             type="text"
             placeholder="Username"
-            value={userName}
+            value={user}
             onChange={(e) => setUserName(e.target.value)}
           />
           <FontAwesomeIcon icon={faUser} className="input-iconnn" />
@@ -188,6 +188,9 @@ const EditProfile = () => {
         </div>
         {emailError && <div className="error-message">{emailError}</div>}
       </div>
+      <button className="buttonnd" onClick={handleSaveChanges}>
+        Save
+      </button>
       <div className="password-section">
         <div className="titlechange">
           <h2 style={{ color: "rgba(33, 158, 188, 1)", fontWeight: "bold" }}>
@@ -226,7 +229,7 @@ const EditProfile = () => {
       </div>
       <div className="buttons">
         <button className="buttonn" onClick={handleSaveChanges}>
-          Save Changes
+          Change
         </button>
         <button className="buttonn" onClick={handleCancel}>
           Cancel

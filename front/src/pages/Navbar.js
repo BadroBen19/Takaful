@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import logo from "../images/logo.png";
-import user from "../image/profile.jpg";
+import diaa from "../image/profile.jpg";
 
 export default function Navbar() {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
@@ -46,7 +46,7 @@ export default function Navbar() {
 
         {isAuthenticated && (
           <a href="/setting">
-            <img className="puser" src={user} alt="Icon" />
+            <img className="puser" src={diaa} alt="Icon" />
           </a>
         )}
       </nav>

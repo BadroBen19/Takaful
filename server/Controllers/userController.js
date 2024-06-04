@@ -5,7 +5,8 @@ const AppError = require("./../outilles/appError");
 const filterObj = (obj, ...allowedFields) => {
   const newObj = {};
   Object.keys(obj).forEach((el) => {
-    if (allowedFields.includes(el)) newObj[el] = obj[el];
+    if (allowedFields.includes(el) && obj[el] !== undefined)
+      newObj[el] = obj[el];
   });
   return newObj;
 };
@@ -35,9 +36,19 @@ exports.updateMe = catchAsync(async (req, res, next) => {
   }
 
   // 2) Filtered out unwanted fields names that are not allowed to be updated
-  const filteredBody = filterObj(req.body, "userName", "email");
+  const filteredBody = filterObj(req.body, "user", "email");
 
-  // 3) Update user document
+  // 3) Check if there are fields to update
+  if (Object.keys(filteredBody).length === 0) {
+    return res.status(200).json({
+      status: "success",
+      data: {
+        user: req.user,
+      },
+    });
+  }
+
+  // 4) Update user document
   const updatedUser = await User.findByIdAndUpdate(req.user.id, filteredBody, {
     new: true,
     runValidators: true,
