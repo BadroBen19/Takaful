@@ -22,6 +22,7 @@ import Services from "./pages/services";
 import Setting from "./pages/setting";
 import SignUp from "./pages/signup";
 import PrivateRoute from "./pages/PrivateRoute";
+import InstructionsSent from "./pages/InstructionsSent";
 
 function App() {
   return (
@@ -41,7 +42,7 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/email" component={Email} />
         <Route path="/change" component={Change} />
-
+        <Route path="/instru" component={InstructionsSent} />
         <Route
           path="/donation-form"
           component={() => <DonationForm UserPfp="" />}
