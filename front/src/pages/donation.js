@@ -6,7 +6,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import "./donation.css";
-
+// addinng
 const Donation = ({
   pictureUrl,
   title,
