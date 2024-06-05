@@ -1,15 +1,17 @@
 import "./email.css";
+import React from "react";
+
 export default function Email() {
-  var emailname = "hda ri example@dz";
+  const emailname = "example@dz";
   return (
-    <div class="emailsent">
-      <p class="t1">Instructions Sent</p>
-      <p class="pr1">We sent instructions to change your</p>
-      <p class="pr1">password to {emailname}</p>
-      <p class="pr1">please check both your inbox and spam</p>
-      <p class="pr1">folder</p>
-      <a href="/Home">
-        <button class="ok">Okay</button>
+    <div className="emailsent">
+      <p className="t1">Instructions Sent</p>
+      <p className="pr1">We sent instructions to change your</p>
+      <p className="pr1">password to <span className="email-name">{emailname}</span></p>
+      <p className="pr1">please check both your inbox and spam</p>
+      <p className="pr1">folder</p>
+      <a href="/">
+        <button className="ok">Okay</button>
       </a>
     </div>
   );

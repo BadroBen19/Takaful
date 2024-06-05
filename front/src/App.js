@@ -4,7 +4,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import categoryRoutes from "./categoryRoutes";
-import InstructionsSent from "./pages/InstructionsSent";
 import Categories from "./pages/Categories"; // Named import for Categories
 import DonationForm from "./pages/DonationForm";
 import FAQs from "./pages/FAQs";
@@ -47,7 +46,7 @@ function App() {
         <Route path="/forgot" component={Forgot} />
         <Route path="/donation/:id" component={Donationn} />
         <Route path="/login" component={Login} />
-        <Route path="/email" component={InstructionsSent} />
+        <Route path="/email" component={Email} />
         <Route path="/resetPassword/:token" component={Change} />
 
         <Route
