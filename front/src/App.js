@@ -14,11 +14,13 @@ import Login from "./pages/Login";
 import Navbar from "./pages/Navbar";
 import NotFound from "./pages/NotFound";
 import PrivateRoute from "./pages/PrivateRoute";
+import  ShareExperience  from "./pages/setting";
 import Testimonies from "./pages/Testimonies";
 import AboutUs from "./pages/aboutUs";
 import Change from "./pages/change";
 import Donationn from "./pages/donationn";
 import Email from "./pages/email";
+import postuser from "./pages/postuser";
 import Services from "./pages/services";
 import Setting from "./pages/setting";
 import SignUp from "./pages/signup";
@@ -30,10 +32,12 @@ function App() {
 
       <Switch>
         <Route path="/donateforme" exact component={DonationForm} />
+        <Route path="/sharexp" exact component={ShareExperience} />
         <Route path="/" exact component={Home} />
         <Route path="/set" exact component={Setting} />
         <Route path="/about" component={AboutUs} />
         <Route path="/services" component={Services} />
+        <Route path="/postuser" component={postuser} />
         <Route path="/signup" component={SignUp} />
         <Route path="/FAQs" component={FAQs} />
         <PrivateRoute path="/setting" component={Setting} />

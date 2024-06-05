@@ -36,11 +36,13 @@ const SideNav = ({ handleNavItemChange }) => {
           name="About"
           onClick={() => handleNavItemChange("About")}
         />
-        <NavItem
-          icon={<FaHandHoldingHeart icon={FaHandHoldingHeart} />}
-          name="see my poste"
-          onClick={() => handleNavItemChange("see my poste ")}
-        />
+        <a href="/postuser">
+          <NavItem
+            icon={<FaHandHoldingHeart icon={FaHandHoldingHeart} />}
+            name="see my poste"
+            onClick={() => handleNavItemChange("see my poste ")}
+          />{" "}
+        </a>
         <button className="btnout"> sign out </button>
       </div>
     </div>

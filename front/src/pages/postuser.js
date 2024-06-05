@@ -1,11 +1,8 @@
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import {
-  faExclamationTriangle,
-  faUser,
-} from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
-import "./donation.css";
+import "./postuser.css";
 
 const Donation = ({
   imageUrl,
@@ -18,6 +15,8 @@ const Donation = ({
   const amountPercentage = (amount * 100) / target;
   const [showShareModal, setShowShareModal] = useState(false);
   const [showReportModal, setShowReportModal] = useState(false);
+  const [showContactModal, setShowContactModal] = useState(false); // State pour le modal de contact admin
+  const [message, setMessage] = useState(""); // State pour le message du contact admin
 
   const openShareModal = () => {
     setShowShareModal(true);
@@ -33,6 +32,20 @@ const Donation = ({
 
   const closeReportModal = () => {
     setShowReportModal(false);
+  };
+
+  const openContactModal = () => {
+    setShowContactModal(true);
+  };
+
+  const closeContactModal = () => {
+    setShowContactModal(false);
+  };
+
+  const handleSendMessage = () => {
+    // Logic pour envoyer le message à l'admin
+    console.log("Message to admin:", message);
+    closeContactModal();
   };
 
   console.log("imageUrl:", imageUrl); // Pour déboguer
@@ -107,22 +120,9 @@ const Donation = ({
             </div>
           </div>
           <div className="actions">
-            <button className="donate-btn">
-              {" "}
-              <a href="/donateforme">
-                <span
-                  style={{
-                    color: "white",
-                    fontSize: "1.1rem",
-                    textTransform: "capitalize",
-                    fontWeight: "bold",
-                  }}
-                >
-                  Donate{" "}
-                </span>
-              </a>
-            </button>
-
+            <a href="/sharexp">
+              <button className="btnshar"> Share reviews </button>
+            </a>
             <button className="share-btn" onClick={openShareModal}>
               <i
                 className="fa-solid fa-share-from-square"
@@ -139,21 +139,8 @@ const Donation = ({
                 Share
               </span>
             </button>
-            <button className="report-btn" onClick={openReportModal}>
-              <FontAwesomeIcon
-                icon={faExclamationTriangle}
-                style={{ color: "rgba(136, 15, 51, 1)", fontSize: "1.5em" }}
-              />
-              <span
-                style={{
-                  color: "rgba(136, 15, 51, 1)",
-                  fontSize: "0.8rem",
-                  textTransform: "capitalize",
-                  fontWeight: "bold",
-                }}
-              >
-                Report
-              </span>
+            <button className="cad" onClick={openContactModal}>
+              Contact admin
             </button>
 
             {showShareModal && (
@@ -302,6 +289,45 @@ const Donation = ({
                       Send
                     </button>
                   </div>
+                </div>
+              </div>
+            )}
+
+            {showContactModal && (
+              <div id="contactModal" className="modal">
+                <div className="contenuu">
+                  <span className="closecontact" onClick={closeContactModal}>
+                    &times;
+                  </span>
+                  <h3
+                    className="contactadmin"
+                    style={{
+                    
+                      textAlign: "center",
+                      margin: "35px 6px 4px 4px ",
+                      color: "rgba(2, 48, 71, 1)",
+                    }}
+                  >
+                    Contact Admin
+                  </h3>
+                  <textarea
+                    className="message-box"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    placeholder="Enter your message here..."
+                    style={{
+                      width: "100%",
+                      height: "100px",
+                      padding: "10px",
+                      fontSize: "1.5rem",
+                      borderRadius: "5px",
+                      border: "1px solid rgba(2, 48, 71, 1)",
+                      marginBottom: "10px",
+                    }}
+                  ></textarea>
+                  <button className="send-button" onClick={handleSendMessage}>
+                    Send
+                  </button>
                 </div>
               </div>
             )}

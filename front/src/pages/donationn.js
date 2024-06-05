@@ -1,4 +1,3 @@
-// Donationn.js
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -6,7 +5,7 @@ import Donation from "./donation";
 
 const Donationn = () => {
   const { id } = useParams();
-  const [donationData, setDonationData] = useState([]);
+  const [donationData, setDonationData] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -26,6 +25,8 @@ const Donationn = () => {
     fetchData();
   }, [id]);
 
+  console.log("donationData:", donationData); // Pour déboguer
+
   return (
     <div>
       {loading ? (
@@ -33,7 +34,7 @@ const Donationn = () => {
       ) : (
         donationData && (
           <Donation
-            pictureUrl={donationData.imageUrl}
+            imageUrl={donationData.image ? donationData.image[0] : null}
             title={donationData.Title}
             username={donationData.user}
             amount={donationData.amount}
