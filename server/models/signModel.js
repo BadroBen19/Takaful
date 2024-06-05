@@ -25,6 +25,7 @@ const signUpSchema = new mongoose.Schema({
       },
       message: "Passwords are not the same",
     },
+    isAdmin:{type:Boolean,default:false}
   },
   Title: { type: String, required: true },
   selectedCategory: { type: String, required: true },

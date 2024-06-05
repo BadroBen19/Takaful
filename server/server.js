@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/authRoutes");
+const donationRoutes = require("./routes/donationRoute");
 const tourRoutes = require("./routes/tourRoutes");
 const cardRoutes = require("./routes/cardRoutes");
 const reviewRoutes = require("./routes/reviewRoutes");
@@ -32,6 +33,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/", authRoutes);
+app.use("/", donationRoutes);
 app.use("/", reviewRoutes);
 app.use("/tour", tourRoutes);
 app.use("/", cardRoutes);

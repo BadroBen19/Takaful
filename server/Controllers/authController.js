@@ -47,12 +47,12 @@ const createSendToken = (user, statusCode, res) => {
 
 exports.protect = catchAsync(async (req, res, next) => {
   let token;
-
+  //try{
   if (
     req.headers.authorization &&
     req.headers.authorization.startsWith("Bearer")
   ) {
-    token = req.headers.authorization.split(" ")[1];
+    token = localStorage.getItem("jwt"); //req.headers.authorization.split(" ")[1];
   }
 
   if (!token) {
@@ -81,7 +81,22 @@ exports.protect = catchAsync(async (req, res, next) => {
 
   req.user = currentUser;
   next();
+  // } catch (err) {
+  //   res.status(400).send("access denied.");
+  // }
 });
+
+exports.isAdmin = (req, res, next) => {
+  req,
+    res,
+    () => {
+      if (req.protect.isAdmin) {
+        next();
+      } else {
+        res.status(403).send("Access denied. Not authorized!");
+      }
+    };
+};
 
 exports.getSignup = async (req, res) => {
   return res.redirect("pager.html");
@@ -153,13 +168,23 @@ exports.login = catchAsync(async (req, res, next) => {
         req.body.Password,
         user.Password
       );
+      // Mot de passe correct
       if (passwordMatch) {
-        // Mot de passe correct
         const token = signToken(user._id);
-        res.status(200).json({
-          status: "success",
-          token,
-        });
+        // si admin
+        if (user.isAdmin) {
+          res.status(200).json({
+            status: "success",
+            token,
+            redirectUrl: "/adminDashboard", // L'URL vers la page ta3 l'admin
+          });
+        } else {
+          //sinon
+          res.status(200).json({
+            status: "success",
+            token,
+          });
+        }
       } else {
         return next(new AppError("INCORRECT PASSWORD !!", 401));
       }
