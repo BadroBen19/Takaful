@@ -285,3 +285,18 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
 
   createSendToken(user, 200, res);
 });
+
+exports.getUserInfo = catchAsync(async (req, res, next) => {
+  const user = await signModel.findById(req.user.id);
+
+  if (!user) {
+    return next(new AppError("User not found", 404));
+  }
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      user,
+    },
+  });
+});

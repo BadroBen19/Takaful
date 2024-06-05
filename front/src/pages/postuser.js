@@ -1,22 +1,46 @@
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import axios from "axios";
+import { jwtDecode } from "jwt-decode"; // Correct import of jwt-decode
+import React, { useEffect, useState } from "react";
 import "./postuser.css";
 
-const Donation = ({
-  imageUrl,
-  title,
-  username,
-  amount,
-  target,
-  description,
-}) => {
-  const amountPercentage = (amount * 100) / target;
+const Donation = ({ imageUrl, title, description }) => {
+  const [userData, setUserData] = useState({});
+  const [userId, setUserId] = useState(null);
+
   const [showShareModal, setShowShareModal] = useState(false);
   const [showReportModal, setShowReportModal] = useState(false);
-  const [showContactModal, setShowContactModal] = useState(false); // State pour le modal de contact admin
-  const [message, setMessage] = useState(""); // State pour le message du contact admin
+  const [showContactModal, setShowContactModal] = useState(false);
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const token = localStorage.getItem("jwt");
+        if (token) {
+          const decodedToken = jwtDecode(token);
+          console.log(decodedToken.id);
+          setUserId(decodedToken.id);
+          const response = await axios.get(
+            `http://localhost:5000/getUserById/${decodedToken.id}`
+          );
+          setUserData(response.data);
+        } else {
+          console.error("No token found");
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
+  const amountPercentage = userData.target
+    ? (userData.amount * 100) / userData.target
+    : 0;
 
   const openShareModal = () => {
     setShowShareModal(true);
@@ -43,20 +67,20 @@ const Donation = ({
   };
 
   const handleSendMessage = () => {
-    // Logic pour envoyer le message à l'admin
     console.log("Message to admin:", message);
     closeContactModal();
   };
 
-  console.log("imageUrl:", imageUrl); // Pour déboguer
+  console.log(imageUrl);
+  console.log(userData); // Log userData to check its content
 
   return (
     <div className="post-container">
       <div className="lfog">
         <div className="left-container">
-          {imageUrl ? (
+          {userData.image && userData.image[0] ? (
             <img
-              src={`http://localhost:5000/images/${imageUrl}`}
+              src={`http://localhost:5000/images/${userData.image[0]}`}
               alt="There is no picture!"
               className="valid-picture"
             />
@@ -76,7 +100,7 @@ const Donation = ({
               }}
               className="post-title"
             >
-              {title}
+              {userData.Title || "Title not available"}
             </p>
             <div className="user-info">
               <FontAwesomeIcon className="user-icon" icon={faUser} />
@@ -89,7 +113,7 @@ const Donation = ({
                   textTransform: "capitalize",
                 }}
               >
-                {username}
+                {userData.user || "Username not available"}
               </span>
             </div>
             <div className="amount-info">
@@ -101,15 +125,13 @@ const Donation = ({
                   fontWeight: "bold",
                 }}
               >
-                {" "}
-                {amount} $
+                {userData.amount !== undefined ? `${userData.amount} $` : ""}
               </span>
               <span
                 className="target"
                 style={{ fontSize: "1rem", color: "rgba(2, 48, 71, 1)" }}
               >
-                {" "}
-                {target}
+                {userData.target !== undefined ? `${userData.target}` : ""}
               </span>
             </div>
             <div className="progress-bar">
@@ -119,11 +141,11 @@ const Donation = ({
               ></div>
             </div>
           </div>
-          <div className="actions">
+          <div className="actions2">
             <a href="/sharexp">
               <button className="btnshar"> Share reviews </button>
             </a>
-            <button className="share-btn" onClick={openShareModal}>
+            <button className="share-btn2" onClick={openShareModal}>
               <i
                 className="fa-solid fa-share-from-square"
                 style={{ color: "rgba(33, 158, 188, 1)", fontSize: "1.5em" }}
@@ -268,9 +290,7 @@ const Donation = ({
                             id="problem5"
                             name="problem5"
                           />
-                          <label htmlFor="problem5">
-                            Questionable Intentions
-                          </label>
+                          <label htmlFor="problem5">Privacy Issues</label>
                         </div>
                         <div className="prob">
                           <input
@@ -278,7 +298,9 @@ const Donation = ({
                             id="problem6"
                             name="problem6"
                           />
-                          <label htmlFor="problem6">Others...</label>
+                          <label htmlFor="problem6">
+                            Inappropriate Content
+                          </label>
                         </div>
                       </div>
                     </div>
@@ -302,7 +324,6 @@ const Donation = ({
                   <h3
                     className="contactadmin"
                     style={{
-                    
                       textAlign: "center",
                       margin: "35px 6px 4px 4px ",
                       color: "rgba(2, 48, 71, 1)",
@@ -354,7 +375,7 @@ const Donation = ({
             marginTop: "10px",
           }}
         >
-          {description}
+          {userData.description || "No description available"}
         </p>
       </div>
     </div>

@@ -69,7 +69,7 @@
   height: 50px;
   border-radius: 5px;
   overflow: hidden;
-  margin-top: 32px;
+  margin-top: 20px;
   margin-bottom: 15px;
 }
 
@@ -79,15 +79,14 @@
   transition: width 0.3s ease;
 }
 
-.actions {
+.actions2 {
   display: flex;
   flex-direction: column;
 
   align-items: center;
-  margin-top: 35px;
+  margin-top: -10px;
 }
 
-.share-btn,
 .report-btn,
 .donate-btn {
   display: flex;
@@ -105,20 +104,32 @@
 .report-btn {
   border: solid 1px rgba(136, 15, 51, 1);
 }
-.share-btn {
+.share-btn2 {
   border: solid 1px rgba(33, 158, 188, 1);
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 13px;
+  padding: 10px;
+
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 43%;
+  height: 50px;
 }
 .donate-btn {
   background-color: rgba(33, 158, 188, 1);
 }
 
-.share-btn:hover,
+.share-btn2:hover,
 .report-btn:hover,
 .donate-btn:hover {
   transform: scale(1.1);
 }
 
-.share-btn span,
+.share-btn2 span,
 .report-btn span {
   margin-left: 5px;
 }
@@ -263,55 +274,57 @@
   display: flex;
   flex-direction: column;
 }
-.contactadmin{font-weight: bolder;
-font-size: 45PX;
-margin-bottom: 35PX;
-
+.contactadmin {
+  font-weight: bolder;
+  font-size: 45px;
+  margin-bottom: 35px;
 }
-.message-box{margin-top: 30px;
-margin-bottom: 30px;
-
+.message-box {
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
-.send-button{background-color: rgba(33, 158, 188, 1);
-font-size:30px;
-color:white;
-margin-top: 25PX;
-margin-left: 255px;
-width:100px;
-border-radius: 5px;
-border-color: rgba(33, 158, 188, 1);;
+.send-button {
+  background-color: rgba(33, 158, 188, 1);
+  font-size: 30px;
+  color: white;
+  margin-top: 25px;
+  margin-left: 255px;
+  width: 100px;
+  border-radius: 5px;
+  border-color: rgba(33, 158, 188, 1);
 }
 input[type="checkbox"] {
   margin-right: 5px;
 }
-.cad{color:white;
-    background-color:rgba(136, 15, 51, 1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 13px;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 170px;
-    height: 50px;}
-.btnshar{color:white;
-    background-color: rgba(33, 158, 188, 1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 13px;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 170px;
-    height: 50px;
-
-
+.cad {
+  color: white;
+  background-color: rgba(136, 15, 51, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 13px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 170px;
+  height: 50px;
+}
+.btnshar {
+  color: white;
+  background-color: rgba(33, 158, 188, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 13px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 170px;
+  height: 50px;
 }
 .submit-buttonnn {
   margin-top: 20px;
