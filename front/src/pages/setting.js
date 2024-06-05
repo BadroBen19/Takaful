@@ -12,6 +12,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import React, { useState } from "react";
+import { FaHandHoldingHeart } from "react-icons/fa";
 import "./setting.css";
 
 // SideNav component
@@ -35,6 +36,12 @@ const SideNav = ({ handleNavItemChange }) => {
           name="About"
           onClick={() => handleNavItemChange("About")}
         />
+        <NavItem
+          icon={<FaHandHoldingHeart icon={FaHandHoldingHeart} />}
+          name="see my poste"
+          onClick={() => handleNavItemChange("see my poste ")}
+        />
+        <button className="btnout"> sign out </button>
       </div>
     </div>
   );
