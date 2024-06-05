@@ -17,6 +17,15 @@ import "./setting.css";
 
 // SideNav component
 const SideNav = ({ handleNavItemChange }) => {
+  const handleSignOut = () => {
+    localStorage.removeItem("jwt");
+    // Redirigez vers la page d'accueil
+    window.location.href = "/";
+    // Rechargez la page après une courte pause pour s'assurer que la redirection s'est produite
+    setTimeout(() => {
+      window.location.reload();
+    }, 100);
+  };
   return (
     <div className="side-nav">
       <div className="titlenav">Settings</div>
@@ -36,14 +45,17 @@ const SideNav = ({ handleNavItemChange }) => {
           name="About"
           onClick={() => handleNavItemChange("About")}
         />
-        <a href="/postuser">
+        <a href="/post">
           <NavItem
             icon={<FaHandHoldingHeart icon={FaHandHoldingHeart} />}
             name="see my poste"
             onClick={() => handleNavItemChange("see my poste ")}
           />{" "}
         </a>
-        <button className="btnout"> sign out </button>
+        <button className="btnout" onClick={handleSignOut}>
+          {" "}
+          sign out{" "}
+        </button>
       </div>
     </div>
   );
