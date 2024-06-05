@@ -41,7 +41,7 @@ function App() {
         <Route path="/donation/:id" component={Donationn} />
         <Route path="/login" component={Login} />
         <Route path="/email" component={Email} />
-        <Route path="/change" component={Change} />
+        <Route path="/resetPassword/:id" component={Change} />
 
         <Route
           path="/donation-form"

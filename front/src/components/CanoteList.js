@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import puser from "../image/profile.jpg";
+import diaa from "../image/profile.jpg";
 import Canote from "./Canote";
 import "./CanoteList.css";
 const CanoteList = ({ category }) => {
@@ -56,7 +56,7 @@ const CanoteList = ({ category }) => {
                 percentage={50}
                 imageUrl={imageUrl}
                 // hna bdlt
-                profileImageUrl={puser}
+                profileImageUrl={diaa}
                 {...canote}
               />
             );

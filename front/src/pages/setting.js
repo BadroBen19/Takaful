@@ -10,6 +10,7 @@ import {
   faUserPen,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "axios";
 import React, { useState } from "react";
 import "./setting.css";
 
@@ -60,8 +61,8 @@ const EditProfile = () => {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
-  const handleSaveChanges = async () => {
-    if (!validateInputs()) {
+  const handleSaveProfile = async () => {
+    if (!validateProfileInputs()) {
       return;
     }
 
@@ -70,59 +71,86 @@ const EditProfile = () => {
       email: email || undefined,
     };
 
-    const passwordData = {
-      currentPassword,
-      newPassword,
-      confirmNewPassword,
-    };
-
     try {
-      if (currentPassword || newPassword || confirmNewPassword) {
-        // Update password
-        const passwordResponse = await fetch(
-          "http://localhost:5000/updatePassword",
-          {
-            method: "PATCH",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(passwordData),
-          }
-        );
+      const token = localStorage.getItem("jwt");
 
-        if (!passwordResponse.ok) {
-          throw new Error("Failed to update password.");
+      const profileResponse = await axios.patch(
+        "http://localhost:5000/updateMe",
+        userProfileData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
         }
-      }
+      );
 
-      // Update user profile (username and email)
-      const profileResponse = await fetch("http://localhost:5000/updateMe", {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userProfileData),
-      });
-
-      if (!profileResponse.ok) {
+      if (profileResponse.data.status !== "success") {
         throw new Error("Failed to save changes.");
       }
 
-      // Reset form and error messages
       setUserName("");
       setEmail("");
-      setCurrentPassword("");
-      setNewPassword("");
-      setConfirmNewPassword("");
       setEmailError("");
-      setPasswordError("");
     } catch (error) {
       console.error("Error saving changes:", error);
-      setPasswordError("Failed to save changes. Please try again later.");
+      setEmailError("Failed to save changes. Please try again later.");
     }
   };
 
-  const validateInputs = () => {
+  const handleSavePassword = async () => {
+    if (!validatePasswordInputs()) {
+      return;
+    }
+
+    const passwordData = {
+      passwordCurrent: currentPassword,
+      Password: newPassword,
+      passwordConfirm: confirmNewPassword,
+    };
+
+    try {
+      const token = localStorage.getItem("jwt");
+
+      if (!token) {
+        setPasswordError("No token found. Please log in.");
+        return;
+      }
+
+      const passwordResponse = await axios.patch(
+        "http://localhost:5000/updateMyPassword",
+        passwordData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (passwordResponse.data.status !== "success") {
+        throw new Error("Failed to update password.");
+      }
+
+      setCurrentPassword("");
+      setNewPassword("");
+      setConfirmNewPassword("");
+      setPasswordError("");
+    } catch (error) {
+      console.error("Error updating password:", error);
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        setPasswordError(error.response.data.message);
+      } else {
+        setPasswordError("Failed to update password. Please try again later.");
+      }
+    }
+  };
+
+  const validateProfileInputs = () => {
     let isValid = true;
 
     if (email && !email.endsWith("@gmail.com")) {
@@ -132,11 +160,20 @@ const EditProfile = () => {
       setEmailError("");
     }
 
+    return isValid;
+  };
+
+  const validatePasswordInputs = () => {
+    let isValid = true;
+
     if (
       (currentPassword || newPassword || confirmNewPassword) &&
       !(currentPassword && newPassword && confirmNewPassword)
     ) {
       setPasswordError("Please fill out all password fields.");
+      isValid = false;
+    } else if (newPassword.length < 8) {
+      setPasswordError("New password must be at least 8 characters long.");
       isValid = false;
     } else if (newPassword !== confirmNewPassword) {
       setPasswordError("New password and confirm new password must match.");
@@ -187,15 +224,15 @@ const EditProfile = () => {
           <FontAwesomeIcon icon={faEnvelope} className="input-iconnn" />
         </div>
         {emailError && <div className="error-message">{emailError}</div>}
+        <button className="buttonnd" onClick={handleSaveProfile}>
+          Change
+        </button>
       </div>
-      <button className="buttonnd" onClick={handleSaveChanges}>
-        Save
-      </button>
       <div className="password-section">
         <div className="titlechange">
           <h2 style={{ color: "rgba(33, 158, 188, 1)", fontWeight: "bold" }}>
             Change Password
-          </h2>{" "}
+          </h2>
           <hr />
         </div>
         <div className="input-group">
@@ -226,20 +263,19 @@ const EditProfile = () => {
           <FontAwesomeIcon icon={faLock} className="input-iconnn" />
         </div>
         {passwordError && <div className="error-message">{passwordError}</div>}
-      </div>
-      <div className="buttons">
-        <button className="buttonn" onClick={handleSaveChanges}>
-          Change
-        </button>
-        <button className="buttonn" onClick={handleCancel}>
-          Cancel
-        </button>
+        <div className="buttons">
+          <button className="buttonn" onClick={handleSavePassword}>
+            Save
+          </button>
+          <button className="buttonn" onClick={handleCancel}>
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   );
 };
 
-// ShareExperience component
 const ShareExperience = () => {
   const [story, setStory] = useState("");
 
@@ -249,15 +285,16 @@ const ShareExperience = () => {
 
   const handleSubmit = async () => {
     try {
-      const response = await fetch("/api/share-experience", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ story }),
-      });
-      const data = await response.json();
-      console.log(data);
+      const response = await axios.post(
+        "/api/share-experience",
+        { story },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(response.data);
     } catch (error) {
       console.error("Error:", error);
     }

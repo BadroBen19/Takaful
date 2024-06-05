@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
-import "./Navbar.css";
-import logo from "../images/logo.png";
+import React, { useEffect, useState } from "react";
 import diaa from "../image/profile.jpg";
+import logo from "../images/logo.png";
+import "./Navbar.css";
 
 export default function Navbar() {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    const token = localStorage.getItem("authToken");
+    const token = localStorage.getItem("jwt");
     if (token) {
       setIsAuthenticated(true);
     } else {

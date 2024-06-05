@@ -36,7 +36,7 @@ export default function Login() {
       if (!response.data.token) return;
 
       const token = response.data.token;
-      localStorage.setItem("authToken", token);
+      localStorage.setItem("jwt", token);
       console.log(localStorage);
 
       // Redirigez vers la page d'accueil

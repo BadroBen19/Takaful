@@ -2,7 +2,7 @@ import React from "react";
 import { Redirect, Route } from "react-router-dom";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  const isAuthenticated = !!localStorage.getItem("authToken"); // Vérifiez si le token est présent dans le stockage local
+  const isAuthenticated = !!localStorage.getItem("jwt"); // Vérifiez si le token est présent dans le stockage local
 
   return (
     <Route
