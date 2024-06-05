@@ -1,7 +1,7 @@
 import { faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import "./change.css";
 
@@ -13,8 +13,17 @@ export default function Change() {
   const { token } = useParams(); // Récupère le token depuis l'URL
   const history = useHistory();
 
+  useEffect(() => {
+    console.log("Token from URL:", token); // Vérifiez que le token est bien récupéré
+  }, [token]);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (!token) {
+      setError("Token is missing from the URL.");
+      return;
+    }
 
     if (password !== passwordConfirm) {
       setError("Passwords do not match");

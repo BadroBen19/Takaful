@@ -14,7 +14,6 @@ import Login from "./pages/Login";
 import Navbar from "./pages/Navbar";
 import NotFound from "./pages/NotFound";
 import PrivateRoute from "./pages/PrivateRoute";
-import  ShareExperience  from "./pages/setting";
 import Testimonies from "./pages/Testimonies";
 import AboutUs from "./pages/aboutUs";
 import Change from "./pages/change";
@@ -22,7 +21,10 @@ import Donationn from "./pages/donationn";
 import Email from "./pages/email";
 import postuser from "./pages/postuser";
 import Services from "./pages/services";
-import Setting from "./pages/setting";
+import {
+  default as Setting,
+  default as ShareExperience,
+} from "./pages/setting";
 import SignUp from "./pages/signup";
 
 function App() {
@@ -45,7 +47,7 @@ function App() {
         <Route path="/donation/:id" component={Donationn} />
         <Route path="/login" component={Login} />
         <Route path="/email" component={Email} />
-        <Route path="/resetPassword/:id" component={Change} />
+        <Route path="/resetPassword/:token" component={Change} />
 
         <Route
           path="/donation-form"
