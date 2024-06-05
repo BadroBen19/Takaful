@@ -1,33 +1,51 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
-import puser from "../image/profile.jpg";
+import defaultProfileImage from "../image/profile.jpg";
 import "./Canote.css";
 
-const Canote = (props) => {
+const Canote = ({ _id, imageUrl, title, ProfileName, percentage }) => {
   return (
-    <Link to={`/donation/${props._id}`} className="canote">
+    <Link to={`/donation/${_id}`} className="canote" aria-label={`Go to donation page for ${title}`}>
       <div className="canote-image">
         <img
-          src={"http://localhost:5000/images/" + props.imageUrl}
-          alt={props.title}
+          src={imageUrl ? `http://localhost:5000/images/${imageUrl}` : defaultProfileImage}
+          alt={title}
+          onError={(e) => { e.target.src = defaultProfileImage; }}
         />
       </div>
       <div className="canote-content">
         <div className="canote-title">
-          <h1>{props.title}</h1>
+          <h1>{title}</h1>
         </div>
         <div className="canote-profile">
-          <img src={puser} className="zuser" />
-          <h2>{props.ProfileName}</h2>
+          <img src={defaultProfileImage} alt={`${ProfileName}'s profile`} className="profile-image" />
+          <h2>{ProfileName}</h2>
         </div>
-        <div className="progres-bar">
+        <div className="progress-bar">
           <div
-            className="progres"
-            style={{ width: `${props.percentage}%` }}
+            className="progress"
+            style={{ width: `${percentage}%` }}
           ></div>
         </div>
       </div>
+      <style>
+        {`
+          .progress {
+            --percentage: ${percentage}%; 
+          }
+        `}
+      </style>
     </Link>
   );
+};
+
+Canote.propTypes = {
+  _id: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  ProfileName: PropTypes.string.isRequired,
+  percentage: PropTypes.number.isRequired
 };
 
 export default Canote;

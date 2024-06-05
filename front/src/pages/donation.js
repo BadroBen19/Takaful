@@ -40,7 +40,7 @@ const Donation = ({
   return (
     <div className="post-container">
       <div className="lfog">
-        <div className="left-container">
+        <div className="left-container1">
           {imageUrl ? (
             <img
               src={`http://localhost:5000/images/${imageUrl}`}
