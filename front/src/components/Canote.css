@@ -1,26 +1,39 @@
+:root {
+  --border-color: #ccc;
+  --box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  --progress-bar-bg: rgba(33, 158, 188, 0.39);
+  --progress-color: rgba(251, 133, 0, 1);
+}
+
 .canote {
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
   height: 500px;
-  border: 1px solid #ccc;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--box-shadow);
   display: flex;
   flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+.canote:hover {
+  transform: scale(1.02);
 }
 
 .canote-image {
-  flex: 50%;
+  flex: 1;
   display: flex;
-  overflow: hidden; /* Ensures image stays within the borders */
+  overflow: hidden;
 }
 
 .canote-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures the image covers the container without stretching */
+  object-fit: cover;
 }
 
 .canote-content {
-  flex: 50%;
+  flex: 1;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -43,16 +56,43 @@
   border-radius: 50%;
 }
 
-.progres-bar {
-  background-color: rgba(33, 158, 188, 0.39);
-  height: 70px;
-  border-radius: 5px;
+.progress-bar {
+  background-color: var(--progress-bar-bg);
+  height: 20px;
+  border-radius: 10px; /* Make the corners rounded */
   overflow: hidden;
   margin: 7px 25px;
 }
 
-.progres {
-  height: 70px;
-  background-color: rgba(251, 133, 0, 1);
+.progress {
+  height: 100%;
+  background-color: var(--progress-color);
   transition: width 0.3s ease;
+  border-radius: 10px; /* Make the corners rounded */
+}
+
+/* Add animation effect on hover */
+.progress-bar:hover .progress {
+  animation: increaseWidth 0.5s ease-in-out forwards;
+}
+
+/* Update the keyframes for the increaseWidth animation */
+@keyframes increaseWidth {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--percentage); /* Use the current percentage as the final width */
+  }
+}
+
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .canote {
+    height: auto;
+  }
+  .canote-image, .canote-content {
+    flex: none;
+  }
 }
