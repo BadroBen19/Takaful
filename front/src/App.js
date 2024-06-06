@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import categoryRoutes from "./categoryRoutes";
+import Admin from "./pages/Admin";
 import Categories from "./pages/Categories"; // Named import for Categories
 import DonationForm from "./pages/DonationForm";
 import FAQs from "./pages/FAQs";
@@ -20,12 +21,14 @@ import Change from "./pages/change";
 import Donationn from "./pages/donationn";
 import Email from "./pages/email";
 import postuser from "./pages/postuser";
+import Reports from "./pages/reports";
 import Services from "./pages/services";
 import {
   default as Setting,
   default as ShareExperience,
 } from "./pages/setting";
 import SignUp from "./pages/signup";
+import UserContainer from "./pages/userContainer";
 
 function App() {
   return (
@@ -48,7 +51,9 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/email" component={Email} />
         <Route path="/resetPassword/:token" component={Change} />
-
+        <Route path="/reports" component={Reports} />
+        <Route path="/Admin" component={Admin} />
+        <Route path="/userContainer" component={UserContainer} />
         <Route
           path="/donation-form"
           component={() => <DonationForm UserPfp="" />}

@@ -9,12 +9,16 @@ export default function Login() {
     Password: "",
   });
 
+  const [error, setError] = useState(""); // État pour gérer les erreurs
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    setError(""); // Réinitialisez l'erreur avant de soumettre
+
     try {
       const formDataToSend = {
         Email: formData.Email,
@@ -52,6 +56,7 @@ export default function Login() {
         Password: "",
       });
     } catch (error) {
+      setError("Invalid email or password. Please try again."); // Met à jour l'état de l'erreur
       console.error(error.response.data);
     }
   };
@@ -71,7 +76,7 @@ export default function Login() {
             value={formData.Email}
             onChange={handleChange}
           />
-
+          
           <input
             type="password"
             id="input2"
@@ -80,8 +85,25 @@ export default function Login() {
             value={formData.Password}
             onChange={handleChange}
           />
+
+          {error && ( // Affiche le message d'erreur s'il y en a un
+            <div className="error-message">
+              {error}
+              <button type="button" onClick={() => setError("")}>
+                Retry
+              </button>{" "}
+              {/* Bouton pour réinitialiser l'erreur */}
+            </div>
+          )}
+
           <button className="bt111a">Login</button>
-          <button className="bt222a">Create new account</button>
+          <button
+            className="bt222a"
+            onClick={() => (window.location.href = "/signup")}
+          >
+            Create new account
+          </button>
+
           <a className="forget" href="./Forgot">
             Forgot password?
           </a>

@@ -25,11 +25,12 @@ const RecipientProfile = ({ photoSrc, userName }) => (
 const DonationForm = () => {
   const [formData, setFormData] = useState({
     userName: "",
-
+  date:"",
     email: "",
     password: "",
     cardNumber: "",
     amount: "",
+    cvc:"",
   });
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [photoSrc, setPhotoSrc] = useState("");
@@ -98,13 +99,13 @@ const DonationForm = () => {
               onBlur={(event) => setIsEmailValid(event.target.checkValidity())}
               onChange={handleChange}
             />
-            <InputField
+            {/* <InputField
               type="password"
               name="password"
               placeholder="Password"
               value={formData.password}
               onChange={handleChange}
-            />
+            /> */}
             <InputField
               type="id"
               name="cardNumber"
@@ -113,6 +114,24 @@ const DonationForm = () => {
               required
               onChange={handleChange}
             />
+            <div className="pay">
+            <InputField
+              type="password"
+              name="lawla"
+              placeholder="CVC"
+              value={formData.cvc}
+              required
+              onChange={handleChange}
+            />
+             <InputField
+              type="date"
+              name="date"
+              placeholder="  /  /  "
+              value={formData.date}
+              required
+              onChange={handleChange}
+            />
+            </div>
             <InputField
               type="number"
               name="amount"

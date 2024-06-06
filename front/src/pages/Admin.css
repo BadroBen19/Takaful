@@ -1,0 +1,37 @@
+.admin-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+  }
+  
+  .admin-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(33, 158, 188, 0.25);
+    padding:60px;
+  }
+  
+  .admin-button {
+    width:320px;
+    height:45px;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    font-size: 1.4rem;
+    
+border-radius: 4px;
+  }
+  .admin-button:hover{transform: scale(1.1);}
+  .requetes-button {
+    background-color: rgba(33, 158, 188, 1);
+  }
+  
+  .reports-button {
+    background-color: rgba(136, 15, 51, 1);
+  }
+  
