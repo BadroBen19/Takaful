@@ -53,7 +53,7 @@ const CanoteList = ({ category }) => {
                 key={index}
                 title={canote.Title}
                 ProfileName={canote.user}
-                percentage={50}
+                percentage={0}
                 imageUrl={imageUrl}
                 // hna bdlt
                 profileImageUrl={diaa}

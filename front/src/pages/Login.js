@@ -42,6 +42,7 @@ export default function Login() {
       const token = response.data.token;
       localStorage.setItem("jwt", token);
       console.log(localStorage);
+      console.log(token)
 
       // Redirigez vers la page d'accueil
       window.location.href = "/";

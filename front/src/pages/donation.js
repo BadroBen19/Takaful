@@ -100,10 +100,7 @@ const Donation = ({
               </span>
             </div>
             <div className="progress-bar">
-              <div
-                className="progress"
-                style={{ width: `${amountPercentage}%` }}
-              ></div>
+              <div className="progress" style={{ width: `${0}%` }}></div>
             </div>
           </div>
           <div className="actions">

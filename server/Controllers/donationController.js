@@ -1,7 +1,7 @@
 const catchAsync = require("../outilles/catchAsync");
 const sendEmail = require("../outilles/email");
 const express = require("express");
-
+const AppError = require("../outilles/appError");
 const app = express();
 
 exports.donate = catchAsync(async (req, res, next) => {
@@ -10,7 +10,7 @@ We thank you for your generosity ❤️`;
 
   try {
     await sendEmail({
-      email: req.body.Email,
+      email: req.body.email,
       subject: "Successful donation",
       message,
     });

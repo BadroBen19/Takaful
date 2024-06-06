@@ -8,7 +8,7 @@ export default function Email() {
       <p class="pr1">password to {emailname}</p>
       <p class="pr1">please check both your inbox and spam</p>
       <p class="pr1">folder</p>
-      <a href="/Home">
+      <a href="/">
         <button class="ok">Okay</button>
       </a>
     </div>

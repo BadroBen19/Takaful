@@ -15,15 +15,17 @@ import React, { useState } from "react";
 import { FaHandHoldingHeart } from "react-icons/fa";
 import "./setting.css";
 
+// SideNav component
 const SideNav = ({ handleNavItemChange }) => {
   const handleSignOut = () => {
     localStorage.removeItem("jwt");
+    // Redirigez vers la page d'accueil
     window.location.href = "/";
+    // Rechargez la page après une courte pause pour s'assurer que la redirection s'est produite
     setTimeout(() => {
       window.location.reload();
     }, 100);
   };
-
   return (
     <div className="side-nav">
       <div className="titlenav">Settings</div>
@@ -45,27 +47,32 @@ const SideNav = ({ handleNavItemChange }) => {
         />
         <a href="/postuser">
           <NavItem
-            icon={<FaHandHoldingHeart />}
-            name="See my post"
-            onClick={() => handleNavItemChange("see my post")}
-          />
+            icon={<FaHandHoldingHeart icon={FaHandHoldingHeart} />}
+            name="see my poste"
+            onClick={() => handleNavItemChange("see my poste ")}
+          />{" "}
         </a>
         <button className="btnout" onClick={handleSignOut}>
-          Sign out
+          {" "}
+          sign out{" "}
         </button>
       </div>
     </div>
   );
 };
 
-const NavItem = ({ icon, name, onClick }) => (
-  <div className="nav-item" onClick={onClick}>
-    <div className="iconnav">{icon}</div>
-    <span className="namenav">{name}</span>
-    <FontAwesomeIcon icon={faGreaterThan} className="arrowww" />
-  </div>
-);
+// NavItem component
+const NavItem = ({ icon, name, onClick }) => {
+  return (
+    <div className="nav-item" onClick={onClick}>
+      <div className="iconnav">{icon}</div>
+      <span className="namenav">{name}</span>
+      {<FontAwesomeIcon icon={faGreaterThan} className="arrowww" />}
+    </div>
+  );
+};
 
+// EditProfile component
 const EditProfile = () => {
   const [user, setUserName] = useState("");
   const [email, setEmail] = useState("");
@@ -76,7 +83,9 @@ const EditProfile = () => {
   const [passwordError, setPasswordError] = useState("");
 
   const handleSaveProfile = async () => {
-    if (!validateProfileInputs()) return;
+    if (!validateProfileInputs()) {
+      return;
+    }
 
     const userProfileData = {
       user: user || undefined,
@@ -85,6 +94,7 @@ const EditProfile = () => {
 
     try {
       const token = localStorage.getItem("jwt");
+
       const profileResponse = await axios.patch(
         "http://localhost:5000/updateMe",
         userProfileData,
@@ -105,19 +115,18 @@ const EditProfile = () => {
       setEmailError("");
     } catch (error) {
       console.error("Error saving changes:", error);
-      setEmailError(
-        error.response?.data?.message ||
-          "Failed to save changes. Please try again later."
-      );
+      setEmailError("Failed to save changes. Please try again later.");
     }
   };
 
   const handleSavePassword = async () => {
-    if (!validatePasswordInputs()) return;
+    if (!validatePasswordInputs()) {
+      return;
+    }
 
     const passwordData = {
       passwordCurrent: currentPassword,
-      newPassword: newPassword,
+      Password: newPassword,
       passwordConfirm: confirmNewPassword,
     };
 
@@ -150,10 +159,15 @@ const EditProfile = () => {
       setPasswordError("");
     } catch (error) {
       console.error("Error updating password:", error);
-      setPasswordError(
-        error.response?.data?.message ||
-          "Failed to update password. Please try again later."
-      );
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        setPasswordError(error.response.data.message);
+      } else {
+        setPasswordError("Failed to update password. Please try again later.");
+      }
     }
   };
 
@@ -293,7 +307,7 @@ const ShareExperience = () => {
   const handleSubmit = async () => {
     try {
       const response = await axios.post(
-        "/api/share-experience",
+        "http://localhost:5000/sharestory",
         { story },
         {
           headers: {
@@ -330,6 +344,7 @@ const ShareExperience = () => {
   );
 };
 
+// About component
 const About = () => {
   return (
     <div className="about">
@@ -361,6 +376,7 @@ const About = () => {
   );
 };
 
+// MainPage component
 const MainPage = () => {
   const [selectedNavItem, setSelectedNavItem] = useState("Settings");
 

@@ -6,7 +6,7 @@
   color: rgba(2, 48, 71, 1);
 }
 .emailsent{
-  width:50%;
+  width:47%;
   border-radius: 5px;
   background-color:white;
   position: absolute;
@@ -17,14 +17,14 @@ border: 1px solid rgba(33, 158, 188, 1) ;
 margin-top: 200px ;
 margin-bottom: 200px;
 padding: 20px;
-height:400px;
+height:455px;
 }
 .t1{
   font-size: 50px;
   font-weight: bold;
   margin-left: 70px;
  
-padding-bottom: 60px;
+padding-bottom: 25px;
 position: relative;
 padding-top:40px;
   

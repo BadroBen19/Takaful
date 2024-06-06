@@ -18,50 +18,66 @@ const InputField = ({ name, placeholder, value, onChange, type = "text" }) => (
 const RecipientProfile = ({ photoSrc, userName }) => (
   <div className="recipient-profile">
     <img src={photoSrc} alt="Recipient Profile" />
-    <text>{userName}</text>
+    <span>{userName}</span>
   </div>
 );
 
 const DonationForm = () => {
   const [formData, setFormData] = useState({
     userName: "",
-  date:"",
+    date: "",
     email: "",
     password: "",
     cardNumber: "",
     amount: "",
-    cvc:"",
+    cvc: "",
   });
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [photoSrc, setPhotoSrc] = useState("");
   const [title, setTitle] = useState("");
   const [userName, setUserName] = useState("");
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    axios
-      .get("localhost:5000/")
-      .then((response) => {
-        setTitle(response.data.title);
-        setUserName(response.data.userName);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    // axios
+    //   .get("http://localhost:5000/")
+    //   .then((response) => {
+    //     setTitle(response.data.title);
+    //     setUserName(response.data.userName);
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
   }, []);
 
   const handleSubmit = useCallback(
-    (event) => {
+    async (event) => {
       event.preventDefault();
-      axios
-        .post("link ta post api", formData)
-        .then((response) => {
-          console.log(response.data);
-        })
-        .catch((error) => {
-          console.error(error);
+      try {
+        const response = await axios.post("http://localhost:5000/donate", {
+          email: formData.email,
         });
+        if (response.data.status === "success") {
+          setMessage("Email sent successfully!");
+          setError("");
+        } else {
+          setError(
+            "There was an error, verify your information or try again later."
+          );
+        }
+      } catch (error) {
+        if (error.response && error.response.data.message) {
+          setError(error.response.data.message);
+        } else {
+          setError(
+            "There was an error, verify your information or try again later."
+          );
+        }
+        setMessage("");
+      }
     },
-    [formData]
+    [formData.email]
   );
 
   const handleChange = useCallback(
@@ -99,15 +115,9 @@ const DonationForm = () => {
               onBlur={(event) => setIsEmailValid(event.target.checkValidity())}
               onChange={handleChange}
             />
-            {/* <InputField
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={formData.password}
-              onChange={handleChange}
-            /> */}
+
             <InputField
-              type="id"
+              type="text"
               name="cardNumber"
               placeholder="Card number"
               value={formData.cardNumber}
@@ -115,27 +125,27 @@ const DonationForm = () => {
               onChange={handleChange}
             />
             <div className="pay">
-            <InputField
-              type="password"
-              name="lawla"
-              placeholder="CVC"
-              value={formData.cvc}
-              required
-              onChange={handleChange}
-            />
-             <InputField
-              type="date"
-              name="date"
-              placeholder="  /  /  "
-              value={formData.date}
-              required
-              onChange={handleChange}
-            />
+              <InputField
+                type="password"
+                name="cvc"
+                placeholder="CVC"
+                value={formData.cvc}
+                required
+                onChange={handleChange}
+              />
+              <InputField
+                type="date"
+                name="date"
+                placeholder="  /  /  "
+                value={formData.date}
+                required
+                onChange={handleChange}
+              />
             </div>
             <InputField
               type="number"
               name="amount"
-              placeholder="the amount"
+              placeholder="Amount"
               value={formData.amount}
               required
               onChange={handleChange}
@@ -146,8 +156,10 @@ const DonationForm = () => {
                 transform: "translateX(+1800%) translateY(-250%)",
               }}
             />
-            <input className="bottom" type="submit" value="submit" />
+            <input className="bottom" type="submit" value="Submit" />
           </form>
+          {message && <p className="success-message">{message}</p>}
+          {error && <p className="error-message">{error}</p>}
         </div>
       </div>
     </div>
