@@ -45,7 +45,7 @@ const SideNav = ({ handleNavItemChange }) => {
           name="About"
           onClick={() => handleNavItemChange("About")}
         />
-        <a href="/post">
+        <a href="/postuser">
           <NavItem
             icon={<FaHandHoldingHeart icon={FaHandHoldingHeart} />}
             name="see my poste"

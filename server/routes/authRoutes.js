@@ -24,3 +24,5 @@ router.delete("/deleteMe", authController.protect, userController.deleteMe);
 //   authController.updatePassword
 // );
 module.exports = router;
+
+router.get("/me", authController.protect, authController.getUserInfo);
